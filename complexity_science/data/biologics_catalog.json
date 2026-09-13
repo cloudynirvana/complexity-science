@@ -1,0 +1,121 @@
+{
+  "schema": "complexity_science.biologics_catalog.v1",
+  "status": "CLASS_LEVEL_CARICATURES",
+  "note": "These are not products, not INNs, and not dosing tables. Parameters are computational knobs with literature-class provenance tags.",
+  "effectors": [
+    {
+      "id": "checkpoint_pd1_like",
+      "name": "anti-PD-1–like checkpoint class",
+      "class_label": "checkpoint",
+      "pkpd": {
+        "k_el": 0.12,
+        "immune_stim": 0.55,
+        "immune_deplete": 0.02,
+        "direct_clearance": 0.08,
+        "growth_suppress": 0.05,
+        "tox_direct": 0.04,
+        "tox_immune": 0.22,
+        "ec50_clearance": 0.35,
+        "ec50_immune": 0.3
+      },
+      "provenance": {
+        "kind": "class_literature",
+        "tags": [
+          "immune checkpoint blockade class",
+          "delayed immune-mediated clearance (via I timescale)",
+          "immune-related toxicity coupling χ_IE"
+        ],
+        "not": "not a named antibody, not a dose, not a trial result"
+      },
+      "nstg_notes": [
+        "Immune-stimulating class: infection-unmasking is unmodelled.",
+        "HIV / TB themes: do not read ΔI as control of opportunistic infection."
+      ]
+    },
+    {
+      "id": "tgfb_trap_like",
+      "name": "TGF-β trap–like ligand-trap class",
+      "class_label": "tgfb_trap",
+      "pkpd": {
+        "k_el": 0.16,
+        "immune_stim": 0.28,
+        "immune_deplete": 0.03,
+        "direct_clearance": 0.1,
+        "growth_suppress": 0.45,
+        "tox_direct": 0.08,
+        "tox_immune": 0.1,
+        "ec50_clearance": 0.4,
+        "ec50_immune": 0.4
+      },
+      "provenance": {
+        "kind": "class_literature",
+        "tags": [
+          "TGF-β ligand trap / pathway-attenuation class",
+          "growth-rate suppression g_E",
+          "repair / stromal caution not explicitly stated"
+        ],
+        "not": "not a named trap fusion, not antifibrotic prescribing"
+      },
+      "nstg_notes": [
+        "Wound-repair and bleeding themes are outside MHBD-4.",
+        "Anaemia / sickle contexts: do not treat growth suppression as marrow recovery."
+      ]
+    },
+    {
+      "id": "cytokine_like",
+      "name": "cytokine-like stimulatory class",
+      "class_label": "cytokine",
+      "pkpd": {
+        "k_el": 0.55,
+        "immune_stim": 0.85,
+        "immune_deplete": 0.05,
+        "direct_clearance": 0.12,
+        "growth_suppress": 0.0,
+        "tox_direct": 0.28,
+        "tox_immune": 0.12,
+        "ec50_clearance": 0.25,
+        "ec50_immune": 0.2
+      },
+      "provenance": {
+        "kind": "class_literature",
+        "tags": [
+          "short-half-life immune cytokine class (IL-2 / IFN-like caricature)",
+          "high φ, high χ_E, large k_el"
+        ],
+        "not": "not aldesleukin, not an interferon product"
+      },
+      "nstg_notes": [
+        "Capillary-leak / flu-like syndromes are not states.",
+        "Sickle-cell and anaemia: tighter X caps will usually down-rank this class — a model outcome, not a label contraindication."
+      ]
+    },
+    {
+      "id": "fusion_mab_like",
+      "name": "fusion-mAb–like targeted class",
+      "class_label": "fusion_mab",
+      "pkpd": {
+        "k_el": 0.08,
+        "immune_stim": 0.12,
+        "immune_deplete": 0.04,
+        "direct_clearance": 0.48,
+        "growth_suppress": 0.08,
+        "tox_direct": 0.16,
+        "tox_immune": 0.06,
+        "ec50_clearance": 0.22,
+        "ec50_immune": 0.5
+      },
+      "provenance": {
+        "kind": "class_literature",
+        "tags": [
+          "targeted fusion / long-exposure mAb-adjacent class",
+          "direct burden clearance ε_E, slower elimination"
+        ],
+        "not": "not an ADC brand, not a bispecific product"
+      },
+      "nstg_notes": [
+        "Infusion-reaction and on-target off-tumour toxicities are collapsed into χ_E.",
+        "Oncology supportive theme: referral and product choice remain clinical."
+      ]
+    }
+  ]
+}
