@@ -21,17 +21,23 @@ class Schedule:
     duty: float = 0.35
     intensity: float = 0.8
 
-    def infusion(self) -> Callable[[float], float]:
-        intensity = float(self.intensity)
+    def infusion(self, k_el: float = 1.0) -> Callable[[float], float]:
+        """Return u(t). Intensity is a *target exposure*; u = k_el * intensity when on.
+
+        Compensating for elimination keeps class comparisons from being dominated
+        by half-life (a raw infusion would send long-t½ effectors to huge E).
+        """
+        target = max(float(self.intensity), 0.0)
+        rate = max(float(k_el), 1e-6) * target
         if self.kind == "continuous":
-            return lambda _t: intensity
+            return lambda _t: rate
 
         period = max(float(self.period_days), 1e-6)
         on_for = max(min(float(self.duty), 1.0), 0.0) * period
 
         def u(t: float) -> float:
             phase = float(t) % period
-            return intensity if phase < on_for else 0.0
+            return rate if phase < on_for else 0.0
 
         return u
 
@@ -111,7 +117,7 @@ def simulate(
 ) -> Trajectory:
     """Integrate on ``[0, horizon_days]``. Reject non-finite runs."""
     schedule = schedule or Schedule(kind="continuous", intensity=0.0)
-    rhs = mhbd4_rhs(params, schedule.infusion())
+    rhs = mhbd4_rhs(params, schedule.infusion(k_el=params.k_el))
     t_span = (0.0, float(horizon_days))
     t_eval = np.linspace(t_span[0], t_span[1], num=max(int(n_eval), 5))
     max_step = 0.25 if schedule.kind == "pulsed" else 1.0

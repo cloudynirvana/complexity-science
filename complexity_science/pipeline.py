@@ -75,7 +75,7 @@ def run_pipeline(
         conditions = ["oncology_supportive"]
     retrieval = retriever.retrieve(conditions)
     constraints = build_constraints(retrieval)
-    hypotheses = search_pathways(
+    hypotheses, constraints = search_pathways(
         archetype,
         constraints,
         catalog=load_catalog(),

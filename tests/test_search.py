@@ -22,13 +22,14 @@ def test_search_returns_ranked_hypotheses_with_checklist_fields():
     arch = get_archetype("comorbidity_constrained")
     retrieval = NstgRetriever().retrieve(["malaria", "hiv"])
     constraints = build_constraints(retrieval)
-    hyps = search_pathways(
+    hyps, used = search_pathways(
         arch,
         constraints,
         horizon_days=14.0,
         allow_combinations=False,
         max_candidates=12,
     )
+    assert used.x_cap > 0
     assert hyps
     assert hyps[0].rank == 1
     assert "b_final" in hyps[0].metrics

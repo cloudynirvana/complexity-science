@@ -60,7 +60,7 @@ checklist. Optional explainer: open `web/index.html`.
 | Generates in-silico rankings | Treat, diagnose, or manage anyone |
 | Tightens model caps from an index | Execute NSTG as a protocol |
 | Documents attractors | Claim a faster therapeutic path in patients |
-| Awaits external validation | Phase II / FDA-ready / clinically validated |
+| Awaits external validation | Human-trial or regulator-dossier status |
 
 Read `DISCLAIMER.md`, `docs/AWAITING_EXTERNAL_VALIDATION.md`,
 `docs/NSTG_PROVENANCE.md`. Professor email blurb: `docs/PROFESSOR_EMAIL.md`.

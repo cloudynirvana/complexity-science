@@ -34,9 +34,13 @@ falsification design. It is not a digital twin of a named disease.
 
 - \(g_E\) is an optional growth-suppression gain (TGF-β-trap-like class).
 - \(u(t)\) is a prescribed infusion: continuous or periodic pulses.
+  Intensity is a **target exposure**; when the pump is on,
+  \(u = k_{el} \times \text{intensity}\) so class comparisons are not
+  dominated by half-life.
 - Immune-mediated clearance (\(\varepsilon_I\)) is slower than direct
   clearance (\(\varepsilon_E\)) because \(I\) has its own timescale — this is
   how checkpoint-like delay appears **without** a fifth state.
+- Immune stimulation saturates as \(I \to I_{\max}\) so \(I\) cannot run away.
 
 ## Attractors (qualitative)
 

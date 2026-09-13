@@ -12,7 +12,7 @@ from complexity_science.dynamics.archetypes import Archetype
 from complexity_science.dynamics.ode import HostBurdenParams
 from complexity_science.dynamics.simulate import Schedule, Trajectory, simulate
 
-INTENSITIES = (0.45, 0.8, 1.15)
+INTENSITIES = (0.3, 0.6, 1.0)
 SCHEDULE_KINDS = ("continuous", "pulsed")
 
 
@@ -178,7 +178,7 @@ def search_pathways(
     allow_combinations: bool = True,
     max_candidates: int = 36,
     include_untreated: bool = True,
-) -> list[Hypothesis]:
+) -> tuple[list[Hypothesis], SearchConstraints]:
     catalog = list(catalog) if catalog is not None else load_catalog()
     combos = _candidate_combos(
         catalog,
@@ -186,12 +186,41 @@ def search_pathways(
         max_classes=constraints.max_classes,
     )
     hypotheses: list[Hypothesis] = []
+    effective = constraints
     if include_untreated:
         untreated_sched = Schedule(kind="continuous", intensity=0.0)
         untreated, _traj = _evaluate(
             archetype, [], untreated_sched, constraints, horizon_days
         )
         untreated.label = "untreated baseline"
+        # If untreated already sits above the absolute cap, constrain *excess*
+        # host-stress instead of declaring the whole basin infeasible.
+        x_ref = float(untreated.metrics.get("x_peak") or constraints.x_cap)
+        if x_ref > constraints.x_cap:
+            slack = 0.06
+            new_cap = x_ref + slack
+            effective = SearchConstraints(
+                x_cap=new_cap,
+                max_immune_depletion=constraints.max_immune_depletion,
+                infection_risk_weight=constraints.infection_risk_weight,
+                max_classes=constraints.max_classes,
+                flags=constraints.flags,
+                rationale=constraints.rationale
+                + (
+                    "Absolute x_cap was below untreated X_peak; "
+                    f"using excess-stress cap {new_cap:.3f} = untreated + {slack}.",
+                ),
+            )
+            untreated.violations = [
+                v for v in untreated.violations if not v.startswith("x_peak")
+            ]
+            untreated.feasible = not untreated.violations
+            untreated.score = _score(
+                untreated.objectives,
+                constraints=effective,
+                immune_stim_load=0.0,
+                feasible=untreated.feasible,
+            )
         untreated.notes = [
             "Reference trajectory with u(t)=0. Not a 'watch and wait' recommendation."
         ]
@@ -207,12 +236,17 @@ def search_pathways(
                     duty=0.35,
                 )
                 hyp, _traj = _evaluate(
-                    archetype, combo, schedule, constraints, horizon_days
+                    archetype, combo, schedule, effective, horizon_days
                 )
                 hypotheses.append(hyp)
 
     hypotheses.sort(key=lambda h: (-h.feasible, -h.score))
-    trimmed = hypotheses[: max(int(max_candidates), 1)]
+    limit = max(int(max_candidates), 1)
+    trimmed = hypotheses[:limit]
+    untreated = [h for h in hypotheses if not h.effector_ids]
+    if untreated and all(h.effector_ids for h in trimmed):
+        trimmed = trimmed[:-1] + untreated if len(trimmed) >= limit else trimmed + untreated
+        trimmed.sort(key=lambda h: (-h.feasible, -h.score))
     for index, hyp in enumerate(trimmed, start=1):
         hyp.rank = index
-    return trimmed
+    return trimmed, effective

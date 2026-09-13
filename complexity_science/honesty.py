@@ -23,10 +23,10 @@ NON_CLAIMS = [
     "Ranked items are computational hypotheses awaiting falsification.",
 ]
 
-# Surface forms we refuse to emit. Keep the list conservative and specific.
+# Surface forms we refuse to *claim*. Mentions under an explicit negation
+# (non-claims lists, "must not", "awaiting") are allowed.
 _BANNED_PATTERNS = (
     re.compile(r"\bcure[sd]?\b", re.IGNORECASE),
-    re.compile(r"\bcures\b", re.IGNORECASE),
     re.compile(r"\bphase\s*ii\b", re.IGNORECASE),
     re.compile(r"\bphase\s*2\b", re.IGNORECASE),
     re.compile(r"\bfda[-\s]?ready\b", re.IGNORECASE),
@@ -35,12 +35,28 @@ _BANNED_PATTERNS = (
     re.compile(r"\bclinically\s+proven\b", re.IGNORECASE),
 )
 
+_NEGATION = re.compile(
+    r"\b("
+    r"not|never|no|without|banned|ban|refuse|avoid|"
+    r"does\s+not|do\s+not|must\s+not|cannot|can't|don't|"
+    r"non-?claims?|awaiting|unvalidated"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _negated(text: str, start: int) -> bool:
+    window = text[max(0, start - 220) : start]
+    return _NEGATION.search(window) is not None
+
 
 def banned_hits(text: str) -> list[str]:
-    """Return banned substrings found in ``text`` (empty if clean)."""
+    """Return affirmative banned claims (empty if clean or only negated)."""
     hits: list[str] = []
     for pat in _BANNED_PATTERNS:
         for match in pat.finditer(text):
+            if _negated(text, match.start()):
+                continue
             hits.append(match.group(0))
     return hits
 

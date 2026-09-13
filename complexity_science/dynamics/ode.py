@@ -29,6 +29,7 @@ class HostBurdenParams:
     h_i: float = 0.25
     sigma: float = 0.22
     i_star: float = 0.85
+    i_max: float = 1.15
     gamma_b: float = 2.4
     delta_i: float = 0.08
     eta_x: float = 0.9
@@ -82,10 +83,11 @@ def mhbd4_rhs(
             * b
         )
         d_b = growth - clearance
+        stim_room = max(0.0, 1.0 - immune / max(params.i_max, 1e-6))
         d_i = (
             params.sigma * (params.i_star - immune) / (1.0 + params.gamma_b * b)
             - params.delta_i * immune * (1.0 + params.eta_x * tox)
-            + params.immune_stim * _hill(exposure, params.ec50_immune)
+            + params.immune_stim * _hill(exposure, params.ec50_immune) * stim_room
             - params.immune_deplete * exposure * immune
         )
         d_x = (

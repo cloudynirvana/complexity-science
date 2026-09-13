@@ -19,3 +19,4 @@ def test_banned_phrasing_rejected():
     with pytest.raises(ValueError, match="banned"):
         assert_honest("FDA-ready package")
     assert not banned_hits("awaiting external validation; in-silico hypothesis")
+    assert not banned_hits("Does not claim clinical validation, Phase II status.")

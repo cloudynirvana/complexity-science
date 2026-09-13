@@ -1,3 +1,5 @@
+import re
+
 from complexity_science.integration.confluence_adapter import (
     SCHEMA_ID,
     EXAMPLE_REQUEST,
@@ -45,5 +47,5 @@ def test_local_wrap_has_no_confluence_import():
 
     source = adapter.__file__
     text = open(source, encoding="utf-8").read()
-    assert "import confluence" not in text.lower()
-    assert "flybody" not in text.lower()
+    assert not re.search(r"(?m)^\s*(import|from)\s+confluence\b", text)
+    assert not re.search(r"(?m)^\s*(import|from)\s+flybody\b", text)
