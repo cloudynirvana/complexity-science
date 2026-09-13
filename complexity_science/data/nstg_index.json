@@ -1,0 +1,204 @@
+{
+  "schema": "complexity_science.nstg_index.v1",
+  "status": "PLACEHOLDER_RESEARCH_INDEX",
+  "redistribution": "Official NSTG text is not included. Cite FMoH, not this file, for clinical content.",
+  "provenance": {
+    "cite": "Federal Ministry of Health, Nigeria. Nigeria Standard Treatment Guidelines. 3rd edition. Abuja: Federal Ministry of Health; 2022.",
+    "launched": "2022-11-24",
+    "note": "Government communications sometimes use the abbreviation NTSG. Obtain the official book from FMoH or an authorised source.",
+    "this_file": "Original short summaries for a research retriever. If a line conflicts with NSTG 2022, NSTG wins."
+  },
+  "entries": [
+    {
+      "id": "malaria",
+      "name": "Malaria (research index)",
+      "category": "infectious",
+      "aliases": ["plasmodium", "falciparum", "uncomplicated malaria", "severe malaria"],
+      "themes": [
+        "Endemic Plasmodium transmission shapes fever work-up and differential diagnosis.",
+        "Uncomplicated versus severe disease is a clinical fork this index does not encode as a protocol.",
+        "Parasite clearance and supportive care are distinct computational concerns from oncology burden."
+      ],
+      "cautions": [
+        "Fever and cytopenias can confound interpretation of treatment toxicity in a model that only sees X.",
+        "G6PD and pregnancy are classical pharmacologic cautions in antimalarial classes; this index does not list products.",
+        "Do not treat model 'infection_risk' as a malaria diagnosis."
+      ],
+      "comorbidities": ["anaemia", "hiv", "pregnancy_theme"],
+      "constraint_hints": {
+        "x_cap_scale": 0.92,
+        "infection_risk_weight": 0.25,
+        "flags": ["fever_confounder", "cytopenia_confounder", "endemic_infection"]
+      }
+    },
+    {
+      "id": "hiv",
+      "name": "HIV (research index)",
+      "category": "infectious",
+      "aliases": ["hiv-1", "aids", "art"],
+      "themes": [
+        "Lifelong antiretroviral therapy continuity is a clinical priority this software does not schedule.",
+        "Immune competence in the ODE is not a CD4 count and must not be mapped one-to-one.",
+        "Opportunistic infection risk is a qualitative comorbidity theme for constraint tightening."
+      ],
+      "cautions": [
+        "Immune-depleting computational effectors should be down-weighted; they are still not ART advice.",
+        "Drug–drug interaction tables live in official sources, not in this repository.",
+        "Do not interpret a rise in I as virologic control."
+      ],
+      "comorbidities": ["tb_theme", "anaemia", "malaria"],
+      "constraint_hints": {
+        "x_cap_scale": 0.9,
+        "infection_risk_weight": 0.4,
+        "max_immune_depletion_scale": 0.45,
+        "flags": ["art_interaction_unknown", "opportunistic_infection_theme", "immune_proxy_mismatch"]
+      }
+    },
+    {
+      "id": "sickle_cell",
+      "name": "Sickle cell disease (research index)",
+      "category": "haematology",
+      "aliases": ["scd", "sickle cell anaemia", "hbss"],
+      "themes": [
+        "Vaso-occlusive stress and chronic haemolytic anaemia are host-constraint themes.",
+        "Infection risk (including encapsulated organisms) is a recurring clinical motif.",
+        "Disease-modifying and crisis-care pathways belong in NSTG / specialist protocols, not this ODE."
+      ],
+      "cautions": [
+        "Host-stress proxy X is a poor stand-in for acute chest, stroke, or sequestration — do not map it.",
+        "Tighter computational toxicity caps are a modelling choice, not a transfusion threshold.",
+        "Dehydration and hypoxia are clinical, not state variables here."
+      ],
+      "comorbidities": ["anaemia", "malaria"],
+      "constraint_hints": {
+        "x_cap_scale": 0.8,
+        "infection_risk_weight": 0.3,
+        "flags": ["vaso_occlusive_theme", "haemolytic_host", "infection_risk"]
+      }
+    },
+    {
+      "id": "anaemia",
+      "name": "Anaemia (research index)",
+      "category": "haematology",
+      "aliases": ["anemia", "iron deficiency", "haemolytic anaemia"],
+      "themes": [
+        "Anaemia is a syndrome: iron, haemolysis, chronic disease, malaria-related, and sickle-related paths differ.",
+        "Oxygen-carrying capacity is not modelled; X is not haemoglobin.",
+        "Supportive-care themes in oncology often intersect anaemia without implying a single cause."
+      ],
+      "cautions": [
+        "Do not use peak X as a transfusion trigger.",
+        "Haemolysis-adjacent computational toxicity should be treated as a flag, not a Coombs result.",
+        "Classify cause in clinic; this index only tightens a cap."
+      ],
+      "comorbidities": ["malaria", "sickle_cell", "hiv", "oncology_supportive"],
+      "constraint_hints": {
+        "x_cap_scale": 0.85,
+        "infection_risk_weight": 0.05,
+        "flags": ["haemoglobin_unobserved", "haemolysis_adjacent"]
+      }
+    },
+    {
+      "id": "oncology_supportive",
+      "name": "Oncology supportive care (research index)",
+      "category": "oncology",
+      "aliases": ["cancer supportive", "malignancy supportive", "chemotherapy support"],
+      "themes": [
+        "Suspected malignancy needs specialist referral; this software does not triage.",
+        "Supportive themes include infection, anaemia, pain, and organ-stress monitoring.",
+        "Systemic anticancer therapy and biologics are product-specific; we only carry class-level caricatures."
+      ],
+      "cautions": [
+        "Febrile neutropenia is a clinical emergency pathway, not an ODE event.",
+        "Tumour-lysis and infusion reactions are unmodelled.",
+        "Pain ladders and antiemetic tables are NSTG/clinical content — omitted here."
+      ],
+      "comorbidities": ["anaemia", "hiv", "malaria", "sickle_cell"],
+      "constraint_hints": {
+        "x_cap_scale": 1.0,
+        "infection_risk_weight": 0.15,
+        "flags": ["referral_not_modelled", "supportive_care_only"]
+      }
+    },
+    {
+      "id": "febrile_neutropenia_theme",
+      "name": "Febrile neutropenia theme (research index)",
+      "category": "oncology",
+      "aliases": ["neutropenic fever", "fn"],
+      "themes": [
+        "Fever plus neutropenia is a time-critical clinical motif in anticancer therapy.",
+        "The ODE has no neutrophil count; infection_risk_weight is a scalar, not a culture."
+      ],
+      "cautions": [
+        "Never delay real-world work-up because a simulation looks 'stable'.",
+        "This entry only increases infection-risk weighting in search."
+      ],
+      "comorbidities": ["oncology_supportive", "hiv", "malaria"],
+      "constraint_hints": {
+        "x_cap_scale": 0.88,
+        "infection_risk_weight": 0.45,
+        "flags": ["time_critical_unmodelled", "neutrophil_unobserved"]
+      }
+    },
+    {
+      "id": "palliative_pain_theme",
+      "name": "Palliative / cancer pain theme (research index)",
+      "category": "oncology",
+      "aliases": ["cancer pain", "palliative"],
+      "themes": [
+        "Pain assessment and stepwise analgesia are clinical guideline topics.",
+        "Burden B is not a pain score."
+      ],
+      "cautions": [
+        "This pipeline does not recommend analgesics or palliative regimens.",
+        "Do not treat a falling B as symptom control."
+      ],
+      "comorbidities": ["oncology_supportive"],
+      "constraint_hints": {
+        "x_cap_scale": 1.0,
+        "infection_risk_weight": 0.0,
+        "flags": ["symptom_unobserved"]
+      }
+    },
+    {
+      "id": "pregnancy_theme",
+      "name": "Pregnancy theme (research index)",
+      "category": "cross_cutting",
+      "aliases": ["pregnant", "antenatal"],
+      "themes": [
+        "Pregnancy changes risk–benefit for almost every systemic class.",
+        "This index records the theme; it does not encode obstetric protocols."
+      ],
+      "cautions": [
+        "Do not run this tool as a pregnancy-safety checker.",
+        "Teratology and antimalarial/ART choices belong in official sources."
+      ],
+      "comorbidities": ["malaria", "hiv", "anaemia"],
+      "constraint_hints": {
+        "x_cap_scale": 0.75,
+        "infection_risk_weight": 0.2,
+        "flags": ["pregnancy_unmodelled", "exclude_from_casual_search"]
+      }
+    },
+    {
+      "id": "tb_theme",
+      "name": "Tuberculosis theme (research index)",
+      "category": "infectious",
+      "aliases": ["tb", "tuberculosis"],
+      "themes": [
+        "TB–HIV overlap is a major Nigerian clinical context.",
+        "Immune restoration and infection unmasking are not states in MHBD-4."
+      ],
+      "cautions": [
+        "Checkpoint-like immune stimulation in silico is not IRIS prediction.",
+        "Rifamycin interaction tables are omitted on purpose."
+      ],
+      "comorbidities": ["hiv"],
+      "constraint_hints": {
+        "x_cap_scale": 0.9,
+        "infection_risk_weight": 0.35,
+        "flags": ["iris_unmodelled", "drug_interaction_unknown"]
+      }
+    }
+  ]
+}

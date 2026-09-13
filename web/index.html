@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Complexity Science — in-silico explainer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <p class="kicker">Research software · not a medical device</p>
+      <h1>Complexity Science</h1>
+      <p class="lede">
+        An NSTG-guided computational study of pathology dynamics, built to
+        explore <em>in-silico</em> pathway hypotheses under toxicity and
+        comorbidity constraints. It is not clinical decision support and it
+        has not been externally validated.
+      </p>
+
+      <section>
+        <h2>Problem</h2>
+        <p>
+          Host–burden dynamics in an oncology-relevant setting are not
+          isolated from Nigerian comorbidity context: malaria, HIV, sickle
+          cell disease, anaemia. The question this tool can pose is
+          computational: which <strong>class-level</strong> biologic
+          caricatures move a documented attractor under tighter host-stress
+          caps? It cannot say which path is faster for a person.
+        </p>
+      </section>
+
+      <section>
+        <h2>Method</h2>
+        <ol>
+          <li>
+            <strong>NSTG research index.</strong> Placeholder summaries map a
+            condition to themes, cautions, and comorbidities. Cite Federal
+            Ministry of Health, Nigeria,
+            <cite>Nigeria Standard Treatment Guidelines</cite>, 3rd edition,
+            2022. Official text is not on this page.
+          </li>
+          <li>
+            <strong>MHBD-4.</strong> Four states — burden
+            <span class="sym">B</span>, immune competence
+            <span class="sym">I</span>, toxicity
+            <span class="sym">X</span>, exposure
+            <span class="sym">E</span> — with logistic growth, immune and
+            stress modulation, and linear PK. Three archetypes are basins,
+            not diagnoses.
+          </li>
+          <li>
+            <strong>Constrained search.</strong> Checkpoint-like, TGF-β
+            trap–like, cytokine-like, and fusion-mAb–like effectors are
+            scored on burden, immune deficit, and toxicity, then filtered by
+            caps the index tightened.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Outputs</h2>
+        <p>
+          A JSON/Markdown report: ranked <em>in-silico hypotheses</em>, the
+          constraint rationale, downsampled trajectories, and a falsification
+          checklist. Run locally:
+        </p>
+        <pre><code>python -m complexity_science run \
+  --archetype comorbidity_constrained \
+  --conditions "malaria,hiv,sickle_cell,anaemia"</code></pre>
+      </section>
+
+      <section>
+        <h2>Non-claims</h2>
+        <ul>
+          <li>No cure language. No Phase II or FDA-ready phrasing.</li>
+          <li>Not clinically validated. Not a digital twin of a patient.</li>
+          <li>Not an executable NSTG protocol and not a Confluence clone.</li>
+        </ul>
+        <p class="foot">
+          See <code>DISCLAIMER.md</code> and
+          <code>docs/AWAITING_EXTERNAL_VALIDATION.md</code> in the
+          repository. Identity: attractors, multi-scale dynamics, constrained
+          pathway search.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

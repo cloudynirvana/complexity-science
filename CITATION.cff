@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: Complexity Science
+message: >-
+  If you use this software, please cite it as in-silico
+  research software, not as a clinically validated tool.
+type: software
+license: MIT
+version: 0.1.0
+abstract: >-
+  NSTG-guided computational study of pathology dynamics and
+  constrained biologic pathway search. Research hypotheses
+  only; not a medical device or clinical decision support.
+keywords:
+  - complexity science
+  - dynamical systems
+  - in-silico
+  - Nigeria Standard Treatment Guidelines
