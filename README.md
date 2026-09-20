@@ -73,6 +73,17 @@ starting hypotheses with falsifiers, not validated models.
 Read `DISCLAIMER.md` and `docs/NSTG_PROVENANCE.md`. Official NSTG 2022 is
 cited, not redistributed. If a line here conflicts with NSTG, **NSTG wins**.
 
+## Thesis #2 (manuscript)
+
+Full thesis-format computational manuscript (not a clinical study):
+
+- Markdown: `docs/manuscript/thesis_02_complexity_nstg_pathology.md`
+- PDF: `docs/manuscript/thesis_02_complexity_nstg_pathology.pdf`
+- Scholar landing page: `scholar/thesis_02.html`
+- Indexing checklist: `docs/SCHOLAR_THESIS_02.md`
+
+Author: Kelechi Emeka Ogbonna. Date: 2026-09-20.
+
 ## Seed cases
 
 | ID | Research framing |
