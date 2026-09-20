@@ -1,0 +1,184 @@
+schema_version: "1.0.0"
+id: gbm_invasive_niche_hypoxia
+title: Glioblastoma — invasive niche and hypoxia
+disease:
+  name: Glioblastoma
+  abbreviations: [GBM]
+  framing: >-
+    Research framing of an infiltrative primary brain tumour whose hypoxic
+    and invasive niches are hypothesized to couple survival, migration, and
+    treatment escape. Not a neurosurgical plan and not a person-level profile.
+  notes: >-
+    Pseudopalisading necrosis and microvascular proliferation are histological
+    hallmarks used here as observables, not as model states.
+disclaimer: >-
+  In-silico / computational research only. Not a medical device, not
+  clinical decision support, not dosing advice, and not a cure. NSTG is a
+  structured clinical-knowledge constraint layer and is never
+  auto-translated into model parameters. Knowledge ≠ Evidence ≠ Mechanism ≠
+  Parameter ≠ Prediction.
+systemic_axes:
+  - id: hypoxic_niche
+    layer: hypoxia
+    role: driver
+    description: >-
+      Pseudopalisading necrosis marks a hypoxic compartment hypothesized to
+      maintain adaptive programmes and local invasion.
+  - id: infiltrative_front
+    layer: invasion
+    role: driver
+    description: >-
+      Dispersive glioma cells can trade bulk proliferation for migration,
+      limiting local control even when a mass is reduced.
+  - id: angiogenic_compartment
+    layer: vasculature
+    role: context
+    description: >-
+      Microvascular proliferation coexists with poor effective perfusion;
+      vessel quantity is not delivery.
+  - id: host_supportive_context
+    layer: host
+    role: constraint
+    description: >-
+      Supportive-care, infection, and referral themes from NSTG-adjacent
+      national guidance constrain exploration of systemic classes.
+observables:
+  - id: pseudopalisade_hypoxia
+    name: Pseudopalisading necrosis / hypoxia marks
+    modality: histopathology and hypoxia immunohistochemistry (research)
+    research_only: true
+    notes: A niche label, not an oxygen-tension parameter.
+  - id: invasive_margin
+    name: Infiltrative margin beyond contrast-enhancing mass
+    modality: imaging plus histology correlation (research)
+    research_only: true
+    notes: Extent of infiltration is an observable, not a motility coefficient.
+candidate_mechanisms:
+  - id: hypoxia_drives_adaptive_invasion
+    biologic_axis: hypoxia_adaptation
+    status: hypothesis
+    supporting_citation_ids: [hambardzumyan2015, brat2004, semenza2012]
+    nstg_touchpoint_ids: [nstg_supportive_referral]
+    statement: >-
+      Hypoxic GBM niches are a candidate mechanism that couples adaptive
+      survival programmes to an actively migrating cell population at
+      pseudopalisades.
+  - id: invasion_proliferation_tradeoff
+    biologic_axis: invasive_niche
+    status: hypothesis
+    supporting_citation_ids: [giese2003, hambardzumyan2015]
+    nstg_touchpoint_ids: [nstg_palliative]
+    statement: >-
+      An invasive niche may be maintained by a migration–proliferation
+      trade-off, so reducing a bulk mass need not extinguish infiltrative
+      cells.
+  - id: vessel_count_is_not_delivery
+    biologic_axis: vascular_delivery
+    status: hypothesis
+    supporting_citation_ids: [hambardzumyan2015, brat2004]
+    nstg_touchpoint_ids: [nstg_anaemia]
+    statement: >-
+      Microvascular proliferation can coexist with ineffective perfusion;
+      host anaemia themes further caution against treating vessel counts as
+      a delivery parameter.
+falsifiers:
+  - id: hypoxic_but_nonmigratory
+    mechanism_ids: [hypoxia_drives_adaptive_invasion]
+    if_observed: >-
+      Pseudopalisades are hypoxic yet the surrounding cells are non-migratory
+      and lack extracellular-matrix protease programmes.
+    then_reject: >-
+      Hypoxia as a sufficient driver of the invasive niche in that specimen.
+  - id: mass_reduction_clears_infiltrate
+    mechanism_ids: [invasion_proliferation_tradeoff]
+    if_observed: >-
+      Reducing proliferative bulk also clears the infiltrative front in an
+      orthogonal model without a change in motility programmes.
+    then_reject: >-
+      A necessary migration–proliferation trade-off for residual infiltrate.
+  - id: more_vessels_more_delivery
+    mechanism_ids: [vessel_count_is_not_delivery]
+    if_observed: >-
+      Microvascular density tracks freely with tracer or drug delivery into
+      the same hypoxic nest, including under host anaemia.
+    then_reject: >-
+      The claim that angiogenic histology is decoupled from delivery.
+nstg_touchpoints:
+  - id: nstg_supportive_referral
+    theme: supportive_referral
+    role: constraint
+    source_citation_id: nccp2018
+    constraint_statement: >-
+      National cancer-control policy treats suspected malignancy as a
+      specialist-referral theme. This card does not triage neurosurgical
+      urgency or choose radiotherapy.
+  - id: nstg_palliative
+    theme: palliative
+    role: constraint
+    source_citation_id: nstg2022
+    constraint_statement: >-
+      NSTG pain and palliative themes are knowledge constraints. Burden in
+      a future model would not be a pain score and must not be mapped to one.
+  - id: nstg_anaemia
+    theme: anaemia
+    role: constraint
+    source_citation_id: eml2020
+    constraint_statement: >-
+      Anaemia is a host-constraint theme in Nigerian essential-medicine and
+      NSTG-adjacent context. Haemoglobin is unobserved here and must not
+      become an oxygen-delivery coefficient.
+citations:
+  - id: hambardzumyan2015
+    kind: review
+    epistemic: knowledge
+    doi: "10.1016/j.trecan.2015.10.009"
+    pmid: "27088132"
+    vancouver: >-
+      Hambardzumyan D, Bergers G. Glioblastoma: defining tumor niches.
+      Trends Cancer. 2015;1(4):252-265. doi:10.1016/j.trecan.2015.10.009
+  - id: brat2004
+    kind: primary
+    epistemic: evidence
+    doi: "10.1158/0008-5472.CAN-03-2073"
+    pmid: "14871821"
+    vancouver: >-
+      Brat DJ, Castellano-Sanchez AA, Hunter SB, Pecot M, Cohen C,
+      Hammond EH, et al. Pseudopalisades in glioblastoma are hypoxic,
+      express extracellular matrix proteases, and are formed by an actively
+      migrating cell population. Cancer Res. 2004;64(3):920-927.
+      doi:10.1158/0008-5472.CAN-03-2073
+  - id: giese2003
+    kind: review
+    epistemic: knowledge
+    doi: "10.1200/JCO.2003.05.063"
+    pmid: "12697889"
+    vancouver: >-
+      Giese A, Bjerkvig R, Berens ME, Westphal M. Cost of migration:
+      invasion of malignant gliomas and implications for treatment. J Clin
+      Oncol. 2003;21(8):1624-1636. doi:10.1200/JCO.2003.05.063
+  - id: semenza2012
+    kind: review
+    epistemic: knowledge
+    doi: "10.1016/j.cell.2012.01.021"
+    pmid: "22304911"
+    vancouver: >-
+      Semenza GL. Hypoxia-inducible factors in physiology and medicine.
+      Cell. 2012;148(3):399-408. doi:10.1016/j.cell.2012.01.021
+  - id: nstg2022
+    kind: guideline
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria Standard Treatment
+      Guidelines. 3rd ed. Abuja: Federal Ministry of Health; 2022.
+  - id: nccp2018
+    kind: policy
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria National Cancer Control
+      Plan 2018-2022. Abuja: Federal Ministry of Health; 2018.
+  - id: eml2020
+    kind: guideline
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria Essential Medicines List.
+      7th ed. Abuja: Federal Ministry of Health; 2020.

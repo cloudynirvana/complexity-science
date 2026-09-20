@@ -1,0 +1,204 @@
+schema_version: "1.0.0"
+id: dormant_occult_disease
+title: Dormant and occult residual disease — research framing
+disease:
+  name: Dormant / occult residual cancer
+  abbreviations: [DTC, MRD]
+  framing: >-
+    Research framing of asymptomatic residual disease that may persist as
+    quiescent cells, balanced micrometastases, or immunosurveilled occult
+    populations. This is a hypothesis space about latency, not a licence to
+    treat, image, or declare anyone disease-free.
+  notes: >-
+    Occult means below a detection threshold in a given assay. It does not
+    mean absent, and it does not mean a hidden parameter.
+disclaimer: >-
+  In-silico / computational research only. Not a medical device, not
+  clinical decision support, not dosing advice, and not a cure. NSTG is a
+  structured clinical-knowledge constraint layer and is never
+  auto-translated into model parameters. Knowledge ≠ Evidence ≠ Mechanism ≠
+  Parameter ≠ Prediction.
+systemic_axes:
+  - id: cellular_quiescence
+    layer: dormancy
+    role: driver
+    description: >-
+      Disseminated tumour cells may enter a G0/G1-like pause that evades
+      therapies aimed at proliferating compartments.
+  - id: angiogenic_pause
+    layer: vasculature
+    role: context
+    description: >-
+      A micrometastasis may proliferate and die in balance when it cannot
+      recruit vasculature — a population pause, not a person-level state.
+  - id: immune_equilibrium
+    layer: immunity
+    role: context
+    description: >-
+      Immunosurveillance is a candidate mechanism that holds residual cells
+      in check without clearing them.
+  - id: host_infection_hiv
+    layer: host
+    role: constraint
+    description: >-
+      HIV, TB, and infection themes in NSTG-adjacent context caution against
+      treating immune equilibrium as a controllable knob.
+observables:
+  - id: dtc_detection
+    name: Disseminated tumour cell / residual-disease assay
+    modality: research cytology, molecular MRD, or autopsy correlation
+    research_only: true
+    notes: A negative assay is a detection limit, not proof of clearance.
+  - id: latency_interval
+    name: Documented latency before overt relapse (cohort-level)
+    modality: published natural-history series
+    research_only: true
+    notes: Latency is an epidemiologic observable. It is not a pharmacokinetic time constant.
+candidate_mechanisms:
+  - id: cellular_g0_pause
+    biologic_axis: dormancy_maintenance
+    status: hypothesis
+    supporting_citation_ids: [aguirre2007, sosa2014]
+    nstg_touchpoint_ids: [nstg_supportive_referral]
+    statement: >-
+      Cellular dormancy via a G0/G1-like pause is a candidate mechanism for
+      occult residual disease that later appears as late metastasis.
+  - id: angiogenic_population_pause
+    biologic_axis: dormancy_maintenance
+    status: hypothesis
+    supporting_citation_ids: [aguirre2007, massague2016]
+    nstg_touchpoint_ids: [nstg_anaemia]
+    statement: >-
+      Angiogenic dormancy — proliferation balanced by death without
+      vascular recruitment — is a candidate population-level pause, not a
+      haemoglobin-linked oxygen parameter.
+  - id: immune_control_without_clearance
+    biologic_axis: immune_checkpoint
+    status: hypothesis
+    supporting_citation_ids: [aguirre2007, giancotti2013]
+    nstg_touchpoint_ids: [nstg_hiv, nstg_immunosuppression]
+    statement: >-
+      Immunosurveillance may hold residual cells in equilibrium. Host HIV
+      and infection themes forbid treating that equilibrium as a
+      stimulation schedule or immune-restoration prediction.
+  - id: awakening_is_not_a_protocol
+    biologic_axis: dormancy_awakening
+    status: hypothesis
+    supporting_citation_ids: [sosa2014, massague2016]
+    nstg_touchpoint_ids: [nstg_hiv]
+    statement: >-
+      Niche, fibrotic, or inflammatory cues are candidate awakening
+      mechanisms. They are research objects. They are not a reason to
+      provoke residual disease in a person.
+falsifiers:
+  - id: residual_cells_are_cycling
+    mechanism_ids: [cellular_g0_pause]
+    if_observed: >-
+      Assay-detected residual cells are uniformly cycling and die when
+      proliferation-targeted pressure is applied in an orthogonal model.
+    then_reject: >-
+      Quiescence as the necessary mechanism of occult persistence.
+  - id: avascular_mass_still_expands
+    mechanism_ids: [angiogenic_population_pause]
+    if_observed: >-
+      Occult lesions expand without angiogenesis or a change in
+      proliferation–death balance.
+    then_reject: >-
+      Angiogenic dormancy as the operative pause.
+  - id: immune_depletion_no_outgrowth
+    mechanism_ids: [immune_control_without_clearance]
+    if_observed: >-
+      Immune depletion does not increase outgrowth of residual cells in a
+      system where the cells remain detectable.
+    then_reject: >-
+      Immunosurveillance as a necessary equilibrium mechanism.
+  - id: awakening_cue_no_relapse
+    mechanism_ids: [awakening_is_not_a_protocol]
+    if_observed: >-
+      The hypothesized awakening cue is present and residual cells remain
+      occult across an adequate observation window.
+    then_reject: >-
+      That cue as a sufficient awakening mechanism.
+nstg_touchpoints:
+  - id: nstg_supportive_referral
+    theme: supportive_referral
+    role: constraint
+    source_citation_id: nccp2018
+    constraint_statement: >-
+      National cancer-control planning is about access to diagnosis and
+      treatment, not about declaring occult disease on a computation.
+  - id: nstg_anaemia
+    theme: anaemia
+    role: constraint
+    source_citation_id: eml2020
+    constraint_statement: >-
+      Anaemia remains a host theme. It must not be rewritten as an oxygen
+      or angiogenic coefficient for dormant niches.
+  - id: nstg_hiv
+    theme: hiv
+    role: constraint
+    source_citation_id: nstg2022
+    constraint_statement: >-
+      HIV care continuity is an NSTG-class knowledge priority. Immune
+      competence in a future model is not a CD4 count and must not be used
+      to predict IRIS or awakening.
+  - id: nstg_immunosuppression
+    theme: immunosuppression
+    role: constraint
+    source_citation_id: nstg2022
+    constraint_statement: >-
+      Infection-risk cautions constrain immune-axis exploration. They are
+      not a numeric infection-risk scale and not a reason to withhold or
+      give any product.
+citations:
+  - id: aguirre2007
+    kind: review
+    epistemic: knowledge
+    doi: "10.1038/nrc2256"
+    pmid: "17957189"
+    vancouver: >-
+      Aguirre-Ghiso JA. Models, mechanisms and clinical evidence for cancer
+      dormancy. Nat Rev Cancer. 2007;7(11):834-846. doi:10.1038/nrc2256
+  - id: sosa2014
+    kind: review
+    epistemic: knowledge
+    doi: "10.1038/nrc3793"
+    pmid: "25118602"
+    vancouver: >-
+      Sosa MS, Bragado P, Aguirre-Ghiso JA. Mechanisms of disseminated
+      cancer cell dormancy: an awakening field. Nat Rev Cancer.
+      2014;14(9):611-622. doi:10.1038/nrc3793
+  - id: massague2016
+    kind: review
+    epistemic: knowledge
+    doi: "10.1038/nature17038"
+    pmid: "26791720"
+    vancouver: >-
+      Massagué J, Obenauf AC. Metastatic colonization by circulating tumour
+      cells. Nature. 2016;529(7586):298-306. doi:10.1038/nature17038
+  - id: giancotti2013
+    kind: review
+    epistemic: knowledge
+    doi: "10.1016/j.cell.2013.10.029"
+    pmid: "24209616"
+    vancouver: >-
+      Giancotti FG. Mechanisms governing metastatic dormancy and
+      reactivation. Cell. 2013;155(4):750-764. doi:10.1016/j.cell.2013.10.029
+  - id: nstg2022
+    kind: guideline
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria Standard Treatment
+      Guidelines. 3rd ed. Abuja: Federal Ministry of Health; 2022.
+  - id: nccp2018
+    kind: policy
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria National Cancer Control
+      Plan 2018-2022. Abuja: Federal Ministry of Health; 2018.
+  - id: eml2020
+    kind: guideline
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria Essential Medicines List.
+      7th ed. Abuja: Federal Ministry of Health; 2020.

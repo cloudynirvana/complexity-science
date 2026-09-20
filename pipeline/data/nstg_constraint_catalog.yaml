@@ -1,0 +1,27 @@
+# Qualitative NSTG research index. Official NSTG text is not redistributed.
+# Role is constraint only — no numeric scales, doses, or ODE knobs.
+role: constraint_catalog
+cite: "Federal Ministry of Health, Nigeria. Nigeria Standard Treatment Guidelines. 3rd ed. Abuja: Federal Ministry of Health; 2022."
+redistribution: "Cite FMoH NSTG 2022. Do not copy guideline chapters into this repository."
+if_conflict: "Official NSTG wins."
+entries:
+  - id: infection
+    flags: [infection_theme, do_not_map_to_rate]
+  - id: immunosuppression
+    flags: [immunosuppression_theme, not_a_dose_cap]
+  - id: hiv
+    flags: [hiv_theme, art_continuity_unmodelled]
+  - id: malaria
+    flags: [malaria_theme, fever_confounder]
+  - id: anaemia
+    flags: [anaemia_theme, haemoglobin_unobserved]
+  - id: sickle_cell
+    flags: [sickle_cell_theme, vaso_occlusion_unmodelled]
+  - id: supportive_referral
+    flags: [referral_not_triage]
+  - id: chemosafe
+    flags: [handling_safety_unmodelled]
+  - id: palliative
+    flags: [symptom_unobserved]
+  - id: tb
+    flags: [tb_theme, iris_unmodelled]

@@ -1,0 +1,194 @@
+schema_version: "1.0.0"
+id: pdac_stromal_barrier
+title: Pancreatic ductal adenocarcinoma — stromal barrier
+disease:
+  name: Pancreatic ductal adenocarcinoma
+  abbreviations: [PDAC, PDA]
+  framing: >-
+    Research framing of a desmoplastic carcinoma in which stroma is
+    hypothesized to impede perfusion, diffusion, and immune access. Not a
+    chemotherapy protocol and not a person-level profile.
+  notes: >-
+    Mouse KPC-class observations are evidence in animals. They are not human
+    parameters and are not NSTG instructions.
+disclaimer: >-
+  In-silico / computational research only. Not a medical device, not
+  clinical decision support, not dosing advice, and not a cure. NSTG is a
+  structured clinical-knowledge constraint layer and is never
+  auto-translated into model parameters. Knowledge ≠ Evidence ≠ Mechanism ≠
+  Parameter ≠ Prediction.
+systemic_axes:
+  - id: desmoplastic_matrix
+    layer: stroma
+    role: driver
+    description: >-
+      Fibroinflammatory stroma and hyaluronan-rich matrix are hypothesized
+      to collapse vessels and block small-molecule transport.
+  - id: hypoperfusion
+    layer: vasculature
+    role: driver
+    description: >-
+      Poor perfusion is a candidate delivery failure, distinct from
+      cell-intrinsic drug resistance.
+  - id: immune_access
+    layer: immunity
+    role: context
+    description: >-
+      The same barrier that limits molecules may limit lymphocytes; that
+      coupling is a hypothesis, not a fitted term.
+  - id: host_infection_anaemia
+    layer: host
+    role: constraint
+    description: >-
+      Infection, anaemia, and handling-safety themes from NSTG-adjacent
+      sources constrain systemic-class exploration.
+observables:
+  - id: stromal_hyaluronan
+    name: Stromal hyaluronan / desmoplasia
+    modality: histochemistry (research)
+    research_only: true
+    notes: Matrix abundance is an observable, not an interstitial-pressure parameter.
+  - id: functional_perfusion
+    name: Functional perfusion / tracer delivery
+    modality: imaging or labelled-tracer studies (research)
+    research_only: true
+    notes: Delivery is measured, never inferred from vessel counts alone.
+candidate_mechanisms:
+  - id: hedgehog_stroma_limits_delivery
+    biologic_axis: stromal_barrier
+    status: hypothesis
+    supporting_citation_ids: [olive2009, feig2012]
+    nstg_touchpoint_ids: [nstg_chemosafe]
+    statement: >-
+      Hedgehog-dependent stroma is a candidate mechanism that limits
+      chemotherapeutic delivery in PDAC models; that is a delivery
+      hypothesis, not a licence to write a hedgehog-inhibition dose.
+  - id: hyaluronan_raises_transport_barrier
+    biologic_axis: stromal_barrier
+    status: hypothesis
+    supporting_citation_ids: [provenzano2012, neesse2011]
+    nstg_touchpoint_ids: [nstg_supportive_referral]
+    statement: >-
+      Hyaluronan-rich desmoplasia is a candidate physical barrier to
+      perfusion, diffusion, and convection of small molecules.
+  - id: barrier_also_excludes_immunity
+    biologic_axis: immune_exclusion
+    status: hypothesis
+    supporting_citation_ids: [joyce2015, feig2012]
+    nstg_touchpoint_ids: [nstg_immunosuppression]
+    statement: >-
+      The stromal barrier may also exclude effector T cells, coupling
+      delivery failure to immune privilege in the same gland.
+falsifiers:
+  - id: stroma_depleted_delivery_unchanged
+    mechanism_ids: [hedgehog_stroma_limits_delivery]
+    if_observed: >-
+      Stromal depletion leaves intratumoural tracer or drug exposure
+      unchanged in an orthogonal PDAC model.
+    then_reject: >-
+      Hedgehog-dependent stroma as a necessary delivery barrier.
+  - id: ha_low_still_impermeable
+    mechanism_ids: [hyaluronan_raises_transport_barrier]
+    if_observed: >-
+      Hyaluronan-low tumours remain as poorly perfused as hyaluronan-high
+      tumours after matrix is independently quantified.
+    then_reject: >-
+      Hyaluronan as the primary matrix determinant of the transport barrier.
+  - id: tcells_inside_desmoplasia
+    mechanism_ids: [barrier_also_excludes_immunity]
+    if_observed: >-
+      Effector T cells freely occupy tumour nests despite intact
+      desmoplastic stroma and poor small-molecule delivery.
+    then_reject: >-
+      The stromal barrier as a sufficient cause of T-cell exclusion.
+nstg_touchpoints:
+  - id: nstg_chemosafe
+    theme: chemosafe
+    role: constraint
+    source_citation_id: chemosafe2021
+    constraint_statement: >-
+      National ChemoSafe policy constrains how cytotoxic handling is
+      discussed. It is not a clearance or infusion-rate parameter and is
+      not copied into this card.
+  - id: nstg_supportive_referral
+    theme: supportive_referral
+    role: constraint
+    source_citation_id: nccp2018
+    constraint_statement: >-
+      National cancer-control planning treats diagnosis and treatment access
+      as system-level goals. This explorer does not allocate chemotherapy
+      or declare a centre of excellence.
+  - id: nstg_immunosuppression
+    theme: immunosuppression
+    role: constraint
+    source_citation_id: nstg2022
+    constraint_statement: >-
+      NSTG infection and immunosuppression cautions apply when an immune
+      axis is explored. They remain qualitative flags, not infection-risk
+      weights.
+citations:
+  - id: olive2009
+    kind: primary
+    epistemic: evidence
+    doi: "10.1126/science.1171362"
+    pmid: "19460966"
+    vancouver: >-
+      Olive KP, Jacobetz MA, Davidson CJ, Gopinathan A, McIntyre D,
+      Honess D, et al. Inhibition of Hedgehog signaling enhances delivery
+      of chemotherapy in a mouse model of pancreatic cancer. Science.
+      2009;324(5933):1457-1461. doi:10.1126/science.1171362
+  - id: provenzano2012
+    kind: primary
+    epistemic: evidence
+    doi: "10.1016/j.ccr.2012.01.007"
+    pmid: "22439937"
+    vancouver: >-
+      Provenzano PP, Cuevas C, Chang AE, Goel VK, Von Hoff DD,
+      Hingorani SR. Enzymatic targeting of the stroma ablates physical
+      barriers to treatment of pancreatic ductal adenocarcinoma. Cancer
+      Cell. 2012;21(3):418-429. doi:10.1016/j.ccr.2012.01.007
+  - id: feig2012
+    kind: review
+    epistemic: knowledge
+    doi: "10.1158/1078-0432.CCR-11-3114"
+    pmid: "22896693"
+    vancouver: >-
+      Feig C, Gopinathan A, Neesse A, Chan DS, Cook N, Tuveson DA. The
+      pancreas cancer microenvironment. Clin Cancer Res.
+      2012;18(16):4266-4276. doi:10.1158/1078-0432.CCR-11-3114
+  - id: neesse2011
+    kind: review
+    epistemic: knowledge
+    doi: "10.1136/gut.2010.226092"
+    pmid: "20966025"
+    vancouver: >-
+      Neesse A, Michl P, Frese KK, Feig C, Cook N, Jacobetz MA, et al.
+      Stromal biology and therapy in pancreatic cancer. Gut.
+      2011;60(6):861-868. doi:10.1136/gut.2010.226092
+  - id: joyce2015
+    kind: review
+    epistemic: knowledge
+    doi: "10.1126/science.aaa6204"
+    pmid: "25838376"
+    vancouver: >-
+      Joyce JA, Fearon DT. T cell exclusion, immune privilege, and the tumor
+      microenvironment. Science. 2015;348(6230):74-80.
+      doi:10.1126/science.aaa6204
+  - id: nstg2022
+    kind: guideline
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria Standard Treatment
+      Guidelines. 3rd ed. Abuja: Federal Ministry of Health; 2022.
+  - id: nccp2018
+    kind: policy
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria National Cancer Control
+      Plan 2018-2022. Abuja: Federal Ministry of Health; 2018.
+  - id: chemosafe2021
+    kind: policy
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. National Policy on Chemotherapy
+      Safety (ChemoSafe). Abuja: Federal Ministry of Health; June 2021.

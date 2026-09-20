@@ -1,0 +1,54 @@
+[project]
+name = "complexity-science"
+version = "0.2.0"
+description = "In-silico CaseCard + NSTG-gated PathwaySketch pipeline for complex pathology research. Not a medical device."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Complexity Science contributors" }]
+keywords = [
+  "complexity-science",
+  "in-silico",
+  "pathology-cases",
+  "research",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "pydantic>=2.6",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+complexity-science = "pipeline.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/cloudynirvana/complexity-science"
+Documentation = "https://github.com/cloudynirvana/complexity-science#readme"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pathology_cases*", "pipeline*"]
+
+[tool.setuptools.package-data]
+pathology_cases = ["cases/*.yaml", "schema/*.json"]
+pipeline = ["data/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]

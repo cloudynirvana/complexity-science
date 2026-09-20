@@ -1,0 +1,404 @@
+{
+  "$defs": {
+    "CandidateMechanism": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "statement": {
+          "minLength": 24,
+          "title": "Statement",
+          "type": "string"
+        },
+        "biologic_axis": {
+          "enum": [
+            "metabolic_checkpoint",
+            "immune_exclusion",
+            "immune_checkpoint",
+            "stromal_barrier",
+            "hypoxia_adaptation",
+            "invasive_niche",
+            "vascular_delivery",
+            "dormancy_maintenance",
+            "dormancy_awakening",
+            "host_comorbidity"
+          ],
+          "title": "Biologic Axis",
+          "type": "string"
+        },
+        "supporting_citation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Supporting Citation Ids",
+          "type": "array"
+        },
+        "nstg_touchpoint_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Nstg Touchpoint Ids",
+          "type": "array"
+        },
+        "status": {
+          "const": "hypothesis",
+          "default": "hypothesis",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "statement",
+        "biologic_axis",
+        "supporting_citation_ids"
+      ],
+      "title": "CandidateMechanism",
+      "type": "object"
+    },
+    "Citation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "vancouver": {
+          "minLength": 20,
+          "title": "Vancouver",
+          "type": "string"
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Doi"
+        },
+        "pmid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pmid"
+        },
+        "kind": {
+          "enum": [
+            "review",
+            "primary",
+            "guideline",
+            "policy"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "epistemic": {
+          "enum": [
+            "knowledge",
+            "evidence"
+          ],
+          "title": "Epistemic",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "vancouver",
+        "kind",
+        "epistemic"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "Disease": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 3,
+          "title": "Name",
+          "type": "string"
+        },
+        "abbreviations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Abbreviations",
+          "type": "array"
+        },
+        "framing": {
+          "minLength": 12,
+          "title": "Framing",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "framing"
+      ],
+      "title": "Disease",
+      "type": "object"
+    },
+    "Falsifier": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "if_observed": {
+          "minLength": 12,
+          "title": "If Observed",
+          "type": "string"
+        },
+        "then_reject": {
+          "minLength": 12,
+          "title": "Then Reject",
+          "type": "string"
+        },
+        "mechanism_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Mechanism Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "if_observed",
+        "then_reject",
+        "mechanism_ids"
+      ],
+      "title": "Falsifier",
+      "type": "object"
+    },
+    "NstgTouchpoint": {
+      "additionalProperties": false,
+      "description": "Qualitative constraint only. No numeric scales. NSTG text is not copied.",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "theme": {
+          "minLength": 3,
+          "title": "Theme",
+          "type": "string"
+        },
+        "constraint_statement": {
+          "minLength": 24,
+          "title": "Constraint Statement",
+          "type": "string"
+        },
+        "source_citation_id": {
+          "title": "Source Citation Id",
+          "type": "string"
+        },
+        "role": {
+          "const": "constraint",
+          "default": "constraint",
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "theme",
+        "constraint_statement",
+        "source_citation_id"
+      ],
+      "title": "NstgTouchpoint",
+      "type": "object"
+    },
+    "Observable": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 3,
+          "title": "Name",
+          "type": "string"
+        },
+        "modality": {
+          "minLength": 3,
+          "title": "Modality",
+          "type": "string"
+        },
+        "research_only": {
+          "const": true,
+          "default": true,
+          "title": "Research Only",
+          "type": "boolean"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "modality"
+      ],
+      "title": "Observable",
+      "type": "object"
+    },
+    "SystemicAxis": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "layer": {
+          "enum": [
+            "metabolism",
+            "immunity",
+            "stroma",
+            "hypoxia",
+            "vasculature",
+            "invasion",
+            "dormancy",
+            "host"
+          ],
+          "title": "Layer",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 12,
+          "title": "Description",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "driver",
+            "constraint",
+            "context"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "layer",
+        "description",
+        "role"
+      ],
+      "title": "SystemicAxis",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "default": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "minLength": 8,
+      "title": "Title",
+      "type": "string"
+    },
+    "disease": {
+      "$ref": "#/$defs/Disease"
+    },
+    "systemic_axes": {
+      "items": {
+        "$ref": "#/$defs/SystemicAxis"
+      },
+      "minItems": 2,
+      "title": "Systemic Axes",
+      "type": "array"
+    },
+    "observables": {
+      "items": {
+        "$ref": "#/$defs/Observable"
+      },
+      "minItems": 2,
+      "title": "Observables",
+      "type": "array"
+    },
+    "candidate_mechanisms": {
+      "items": {
+        "$ref": "#/$defs/CandidateMechanism"
+      },
+      "minItems": 2,
+      "title": "Candidate Mechanisms",
+      "type": "array"
+    },
+    "falsifiers": {
+      "items": {
+        "$ref": "#/$defs/Falsifier"
+      },
+      "minItems": 2,
+      "title": "Falsifiers",
+      "type": "array"
+    },
+    "nstg_touchpoints": {
+      "items": {
+        "$ref": "#/$defs/NstgTouchpoint"
+      },
+      "minItems": 1,
+      "title": "Nstg Touchpoints",
+      "type": "array"
+    },
+    "citations": {
+      "items": {
+        "$ref": "#/$defs/Citation"
+      },
+      "minItems": 3,
+      "title": "Citations",
+      "type": "array"
+    },
+    "disclaimer": {
+      "minLength": 40,
+      "title": "Disclaimer",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "disease",
+    "systemic_axes",
+    "observables",
+    "candidate_mechanisms",
+    "falsifiers",
+    "nstg_touchpoints",
+    "citations",
+    "disclaimer"
+  ],
+  "title": "CaseCard",
+  "type": "object",
+  "description": "In-silico research CaseCard. Knowledge, evidence pointers, mechanisms, falsifiers, and NSTG constraints \u2014 never parameters."
+}
