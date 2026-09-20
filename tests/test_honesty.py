@@ -48,7 +48,9 @@ def test_thesis_02_scholar_highwire_tags() -> None:
         "Ogbonna, Kelechi Emeka",
         "2026/09/20",
         "thesis_02_complexity_nstg_pathology.pdf",
+        'name="citation_reference"',
     ):
         assert tag in html
     assert "github.io/complexity-science" in html
     assert "raw.githubusercontent.com" in html
+    assert html.count('name="citation_reference"') == 64

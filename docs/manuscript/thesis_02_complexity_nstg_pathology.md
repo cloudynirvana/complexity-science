@@ -27,7 +27,7 @@ lang: en-GB
 
 **Relation to other work in this repository.** Pull request #1 explores a compact multi-scale host–burden ordinary differential equation (ODE) with numeric constraint *hints*. This manuscript describes the complementary **data-first** layer: YAML CaseCards, qualitative Nigeria Standard Treatment Guidelines (NSTG) constraints, and an evidence gate that **never** auto-translates NSTG into ODE coefficients. Numeric scales such as `x_cap_scale` and `infection_risk_weight` are treated here as smuggled non-parameters.
 
-**How to read this document.** Official NSTG 2022, the Nigeria Essential Medicines List (2020), the National Cancer Control Plan 2018–2022, and the National Policy on Chemotherapy Safety (ChemoSafe, 2021) are **cited, not redistributed**. No guideline chapter, table, or dosing schedule is reproduced. If any line in this repository conflicts with official NSTG 2022, **NSTG wins**.
+**How to read this document.** Official NSTG 2022, the Nigeria Essential Medicines List (2020), the National Cancer Control Plan 2018–2022, and the National Policy on Chemotherapy Safety (ChemoSafe, 2021) are **cited, not redistributed**. No guideline chapter, table, or dosing schedule is reproduced. If any line in this repository conflicts with official NSTG 2022, **NSTG wins**. Bibliographic style is Vancouver / NLM (`docs/CITATION_STYLE.md`).
 
 \newpage
 
@@ -473,35 +473,35 @@ The honest next measurement is an orthogonal assay against a named falsifier —
 
 # References
 
-Vancouver style. DOIs were resolved against the Crossref Works API on 20 September 2026 where a DOI is printed. PMIDs were taken from the seed CaseCards or from PubMed search where noted. Guideline and policy items, and books, have no DOI; none was invented.
+Vancouver / NLM. Policy: `docs/CITATION_STYLE.md`. Journal items were completed from PubMed MEDLINE (authors, NLM abbreviation, volume, issue, pages, PMID) on 20 September 2026. Printed DOIs were previously resolved on the Crossref Works API the same day; unverified DOIs are not printed. Guideline and policy items are Internet citations with a cited date. Books have no DOI. No DOI was invented.
 
-1. Weaver W. Science and complexity. Am Sci. 1948;36(4):536-544. PMID: 18882675.
+1. Weaver W. Science and complexity. Am Sci. 1948;36(4):536-44. PMID: 18882675. Available from: https://www.jstor.org/stable/27826254
 
-2. Anderson PW. More is different. Science. 1972;177(4047):393-396. doi:10.1126/science.177.4047.393
+2. Anderson PW. More is different. Science. 1972;177(4047):393-6. doi:10.1126/science.177.4047.393. PMID: 17796623
 
-3. Goldenfeld N, Kadanoff LP. Simple lessons from complexity. Science. 1999;284(5411):87-89. doi:10.1126/science.284.5411.87
+3. Goldenfeld N, Kadanoff LP. Simple lessons from complexity. Science. 1999;284(5411):87-9. doi:10.1126/science.284.5411.87. PMID: 10102823
 
-4. Hartwell LH, Hopfield JJ, Leibler S, Murray AW. From molecular to modular cell biology. Nature. 1999;402(6761 Suppl):C47-C52. doi:10.1038/35011540
+4. Hartwell LH, Hopfield JJ, Leibler S, Murray AW. From molecular to modular cell biology. Nature. 1999;402(6761 Suppl):C47-52. doi:10.1038/35011540. PMID: 10591225
 
-5. Kitano H. Systems biology: a brief overview. Science. 2002;295(5560):1662-1664. doi:10.1126/science.1069492
+5. Kitano H. Systems biology: a brief overview. Science. 2002;295(5560):1662-4. doi:10.1126/science.1069492. PMID: 11872829
 
-6. Kitano H. Computational systems biology. Nature. 2002;420(6912):206-210. doi:10.1038/nature01254
+6. Kitano H. Computational systems biology. Nature. 2002;420(6912):206-10. doi:10.1038/nature01254. PMID: 12432404
 
-7. Barabási AL, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12(1):56-68. doi:10.1038/nrg2918
+7. Barabási AL, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12(1):56-68. doi:10.1038/nrg2918. PMID: 21164525
 
-8. Plsek PE, Greenhalgh T. The challenge of complexity in health care. BMJ. 2001;323(7313):625-628. doi:10.1136/bmj.323.7313.625
+8. Plsek PE, Greenhalgh T. Complexity science: The challenge of complexity in health care. BMJ. 2001;323(7313):625-8. doi:10.1136/bmj.323.7313.625. PMID: 11557716
 
-9. Ahn AC, Tewari M, Poon CS, Phillips RS. The limits of reductionism in medicine: could systems biology offer an alternative? PLoS Med. 2006;3(6):e208. doi:10.1371/journal.pmed.0030208
+9. Ahn AC, Tewari M, Poon CS, Phillips RS. The limits of reductionism in medicine: could systems biology offer an alternative? PLoS Med. 2006;3(6):e208. doi:10.1371/journal.pmed.0030208. PMID: 16681415
 
-10. Lipsitz LA. Understanding health care as a complex system: concepts and future prospects. JAMA. 2012;308(3):243-244. doi:10.1001/jama.2012.7551
+10. Lipsitz LA. Understanding health care as a complex system: the foundation for unintended consequences. JAMA. 2012;308(3):243-4. doi:10.1001/jama.2012.7551. PMID: 22797640
 
-11. Wolkenhauer O. Why model? Front Physiol. 2014;5:21. doi:10.3389/fphys.2014.00021
+11. Wolkenhauer O. Why model? Front Physiol. 2014;5:21. doi:10.3389/fphys.2014.00021. PMID: 24478728
 
-12. Aldridge BB, Burke JM, Lauffenburger DA, Sorger PK. Physicochemical modelling of cell signalling pathways. Nat Cell Biol. 2006;8(11):1195-1203. doi:10.1038/ncb1497
+12. Aldridge BB, Burke JM, Lauffenburger DA, Sorger PK. Physicochemical modelling of cell signalling pathways. Nat Cell Biol. 2006;8(11):1195-203. doi:10.1038/ncb1497. PMID: 17060902
 
-13. Ioannidis JPA. Why most published research findings are false. PLoS Med. 2005;2(8):e124. doi:10.1371/journal.pmed.0020124
+13. Ioannidis JP. Why most published research findings are false. PLoS Med. 2005;2(8):e124. doi:10.1371/journal.pmed.0020124. PMID: 16060722
 
-14. Begley CG, Ellis LM. Raise standards for preclinical cancer research. Nature. 2012;483(7391):531-533. doi:10.1038/483531a
+14. Begley CG, Ellis LM. Drug development: Raise standards for preclinical cancer research. Nature. 2012;483(7391):531-3. doi:10.1038/483531a. PMID: 22460880
 
 15. Popper KR. The logic of scientific discovery. London: Hutchinson; 1959.
 
@@ -509,101 +509,100 @@ Vancouver style. DOIs were resolved against the Crossref Works API on 20 Septemb
 
 17. Mitchell M. Complexity: a guided tour. Oxford: Oxford University Press; 2009.
 
-18. Hanahan D, Weinberg RA. The hallmarks of cancer. Cell. 2000;100(1):57-70. doi:10.1016/S0092-8674(00)81683-9
+18. Hanahan D, Weinberg RA. The hallmarks of cancer. Cell. 2000;100(1):57-70. doi:10.1016/S0092-8674(00)81683-9. PMID: 10647931
 
-19. Hanahan D, Weinberg RA. Hallmarks of cancer: the next generation. Cell. 2011;144(5):646-674. doi:10.1016/j.cell.2011.02.013
+19. Hanahan D, Weinberg RA. Hallmarks of cancer: the next generation. Cell. 2011;144(5):646-74. doi:10.1016/j.cell.2011.02.013. PMID: 21376230
 
-20. Hanahan D, Coussens LM. Accessories to the crime: functions of cells recruited to the tumor microenvironment. Cancer Cell. 2012;21(3):309-322. doi:10.1016/j.ccr.2012.02.022
+20. Hanahan D, Coussens LM. Accessories to the crime: functions of cells recruited to the tumor microenvironment. Cancer Cell. 2012;21(3):309-22. doi:10.1016/j.ccr.2012.02.022. PMID: 22439926
 
-21. Junttila MR, de Sauvage FJ. Influence of tumour micro-environment heterogeneity on therapeutic response. Nature. 2013;501(7467):346-354. doi:10.1038/nature12626
+21. Junttila MR, de Sauvage FJ. Influence of tumour micro-environment heterogeneity on therapeutic response. Nature. 2013;501(7467):346-54. doi:10.1038/nature12626. PMID: 24048067
 
-22. Quail DF, Joyce JA. Microenvironmental regulation of tumor progression and metastasis. Nat Med. 2013;19(11):1423-1437. doi:10.1038/nm.3394
+22. Quail DF, Joyce JA. Microenvironmental regulation of tumor progression and metastasis. Nat Med. 2013;19(11):1423-37. doi:10.1038/nm.3394. PMID: 24202395
 
-23. Joyce JA, Fearon DT. T cell exclusion, immune privilege, and the tumor microenvironment. Science. 2015;348(6230):74-80. doi:10.1126/science.aaa6204
+23. Joyce JA, Fearon DT. T cell exclusion, immune privilege, and the tumor microenvironment. Science. 2015;348(6230):74-80. doi:10.1126/science.aaa6204. PMID: 25838376
 
-24. Chen DS, Mellman I. Oncology meets immunology: the cancer-immunity cycle. Immunity. 2013;39(1):1-10. doi:10.1016/j.immuni.2013.07.012
+24. Chen DS, Mellman I. Oncology meets immunology: the cancer-immunity cycle. Immunity. 2013;39(1):1-10. doi:10.1016/j.immuni.2013.07.012. PMID: 23890059
 
-25. Chen DS, Mellman I. Elements of cancer immunity and the cancer-immune set point. Nature. 2017;541(7637):321-330. doi:10.1038/nature21349
+25. Chen DS, Mellman I. Elements of cancer immunity and the cancer-immune set point. Nature. 2017;541(7637):321-330. doi:10.1038/nature21349. PMID: 28102259
 
-26. Hegde PS, Chen DS. Top 10 challenges in cancer immunotherapy. Immunity. 2020;52(1):17-35. doi:10.1016/j.immuni.2019.12.011
+26. Hegde PS, Chen DS. Top 10 Challenges in Cancer Immunotherapy. Immunity. 2020;52(1):17-35. doi:10.1016/j.immuni.2019.12.011. PMID: 31940268
 
-27. Gatenby RA, Gillies RJ. Why do cancers have high aerobic glycolysis? Nat Rev Cancer. 2004;4(11):891-899. doi:10.1038/nrc1478
+27. Gatenby RA, Gillies RJ. Why do cancers have high aerobic glycolysis? Nat Rev Cancer. 2004;4(11):891-9. doi:10.1038/nrc1478. PMID: 15516961
 
-28. Li X, Wenes M, Romero P, Huang SC, Fendt SM, Ho PC. Navigating metabolic pathways to enhance antitumour immunity and immunotherapy. Nat Rev Clin Oncol. 2019;16(7):425-441. doi:10.1038/s41571-019-0203-7
+28. Li X, Wenes M, Romero P, Huang SC, Fendt SM, Ho PC. Navigating metabolic pathways to enhance antitumour immunity and immunotherapy. Nat Rev Clin Oncol. 2019;16(7):425-441. doi:10.1038/s41571-019-0203-7. PMID: 30914826
 
-29. Bianchini G, Balko JM, Mayer IA, Sanders ME, Gianni L. Triple-negative breast cancer: challenges and opportunities of a heterogeneous disease. Nat Rev Clin Oncol. 2016;13(11):674-690. doi:10.1038/nrclinonc.2016.66
+29. Bianchini G, Balko JM, Mayer IA, Sanders ME, Gianni L. Triple-negative breast cancer: challenges and opportunities of a heterogeneous disease. Nat Rev Clin Oncol. 2016;13(11):674-690. doi:10.1038/nrclinonc.2016.66. PMID: 27184417
 
-30. Schmid P, Adams S, Rugo HS, Schneeweiss A, Barrios CH, Iwata H, et al. Atezolizumab and nab-paclitaxel in advanced triple-negative breast cancer. N Engl J Med. 2018;379(22):2108-2121. doi:10.1056/NEJMoa1809615
+30. Schmid P, Adams S, Rugo HS, Schneeweiss A, Barrios CH, Iwata H, et al. Atezolizumab and Nab-Paclitaxel in Advanced Triple-Negative Breast Cancer. N Engl J Med. 2018;379(22):2108-2121. doi:10.1056/NEJMoa1809615. PMID: 30345906
 
-31. Hambardzumyan D, Bergers G. Glioblastoma: defining tumor niches. Trends Cancer. 2015;1(4):252-265. doi:10.1016/j.trecan.2015.10.009
+31. Hambardzumyan D, Bergers G. Glioblastoma: Defining Tumor Niches. Trends Cancer. 2015;1(4):252-265. doi:10.1016/j.trecan.2015.10.009. PMID: 27088132
 
-32. Brat DJ, Castellano-Sanchez AA, Hunter SB, Pecot M, Cohen C, Hammond EH, et al. Pseudopalisades in glioblastoma are hypoxic, express extracellular matrix proteases, and are formed by an actively migrating cell population. Cancer Res. 2004;64(3):920-927. doi:10.1158/0008-5472.CAN-03-2073
+32. Brat DJ, Castellano-Sanchez AA, Hunter SB, Pecot M, Cohen C, Hammond EH, et al. Pseudopalisades in glioblastoma are hypoxic, express extracellular matrix proteases, and are formed by an actively migrating cell population. Cancer Res. 2004;64(3):920-7. doi:10.1158/0008-5472.CAN-03-2073. PMID: 14871821
 
-33. Giese A, Bjerkvig R, Berens ME, Westphal M. Cost of migration: invasion of malignant gliomas and implications for treatment. J Clin Oncol. 2003;21(8):1624-1636. doi:10.1200/JCO.2003.05.063
+33. Giese A, Bjerkvig R, Berens ME, Westphal M. Cost of migration: invasion of malignant gliomas and implications for treatment. J Clin Oncol. 2003;21(8):1624-36. doi:10.1200/JCO.2003.05.063. PMID: 12697889
 
-34. Semenza GL. Hypoxia-inducible factors in physiology and medicine. Cell. 2012;148(3):399-408. doi:10.1016/j.cell.2012.01.021
+34. Semenza GL. Hypoxia-inducible factors in physiology and medicine. Cell. 2012;148(3):399-408. doi:10.1016/j.cell.2012.01.021. PMID: 22304911
 
-35. Bertout JA, Patel SA, Simon MC. The impact of O2 availability on human cancer. Nat Rev Cancer. 2008;8(12):967-975. doi:10.1038/nrc2540
+35. Bertout JA, Patel SA, Simon MC. The impact of O2 availability on human cancer. Nat Rev Cancer. 2008;8(12):967-75. doi:10.1038/nrc2540. PMID: 18987634
 
-36. Friedl P, Wolf K. Tumour-cell invasion and migration: diversity and escape mechanisms. Nat Rev Cancer. 2003;3(5):362-374. doi:10.1038/nrc1075
+36. Friedl P, Wolf K. Tumour-cell invasion and migration: diversity and escape mechanisms. Nat Rev Cancer. 2003;3(5):362-74. doi:10.1038/nrc1075. PMID: 12724734
 
-37. Olive KP, Jacobetz MA, Davidson CJ, Gopinathan A, McIntyre D, Honess D, et al. Inhibition of Hedgehog signaling enhances delivery of chemotherapy in a mouse model of pancreatic cancer. Science. 2009;324(5933):1457-1461. doi:10.1126/science.1171362
+37. Olive KP, Jacobetz MA, Davidson CJ, Gopinathan A, McIntyre D, Honess D, et al. Inhibition of Hedgehog signaling enhances delivery of chemotherapy in a mouse model of pancreatic cancer. Science. 2009;324(5933):1457-61. doi:10.1126/science.1171362. PMID: 19460966
 
-38. Provenzano PP, Cuevas C, Chang AE, Goel VK, Von Hoff DD, Hingorani SR. Enzymatic targeting of the stroma ablates physical barriers to treatment of pancreatic ductal adenocarcinoma. Cancer Cell. 2012;21(3):418-429. doi:10.1016/j.ccr.2012.01.007
+38. Provenzano PP, Cuevas C, Chang AE, Goel VK, Von Hoff DD, Hingorani SR. Enzymatic targeting of the stroma ablates physical barriers to treatment of pancreatic ductal adenocarcinoma. Cancer Cell. 2012;21(3):418-29. doi:10.1016/j.ccr.2012.01.007. PMID: 22439937
 
-39. Feig C, Gopinathan A, Neesse A, Chan DS, Cook N, Tuveson DA. The pancreas cancer microenvironment. Clin Cancer Res. 2012;18(16):4266-4276. doi:10.1158/1078-0432.CCR-11-3114
+39. Feig C, Gopinathan A, Neesse A, Chan DS, Cook N, Tuveson DA. The pancreas cancer microenvironment. Clin Cancer Res. 2012;18(16):4266-76. doi:10.1158/1078-0432.CCR-11-3114. PMID: 22896693
 
-40. Neesse A, Michl P, Frese KK, Feig C, Cook N, Jacobetz MA, et al. Stromal biology and therapy in pancreatic cancer. Gut. 2011;60(6):861-868. doi:10.1136/gut.2010.226092
+40. Neesse A, Michl P, Frese KK, Feig C, Cook N, Jacobetz MA, et al. Stromal biology and therapy in pancreatic cancer. Gut. 2011;60(6):861-8. doi:10.1136/gut.2010.226092. PMID: 20966025
 
-41. Kleeff J, Korc M, Apte M, La Vecchia C, Johnson CD, Biankin AV, et al. Pancreatic cancer. Nat Rev Dis Primers. 2016;2:16022. doi:10.1038/nrdp.2016.22
+41. Kleeff J, Korc M, Apte M, La Vecchia C, Johnson CD, Biankin AV, et al. Pancreatic cancer. Nat Rev Dis Primers. 2016;2:16022. doi:10.1038/nrdp.2016.22. PMID: 27158978
 
-42. Kalluri R. The biology and function of fibroblasts in cancer. Nat Rev Cancer. 2016;16(9):582-598. doi:10.1038/nrc.2016.73
+42. Kalluri R. The biology and function of fibroblasts in cancer. Nat Rev Cancer. 2016;16(9):582-98. doi:10.1038/nrc.2016.73. PMID: 27550820
 
-43. Sahai E, Astsaturov I, Cukierman E, DeNardo DG, Egeblad M, Evans RM, et al. A framework for advancing our understanding of cancer-associated fibroblasts. Nat Rev Cancer. 2020;20(3):174-186. doi:10.1038/s41568-019-0238-1
+43. Sahai E, Astsaturov I, Cukierman E, DeNardo DG, Egeblad M, Evans RM, et al. A framework for advancing our understanding of cancer-associated fibroblasts. Nat Rev Cancer. 2020;20(3):174-186. doi:10.1038/s41568-019-0238-1. PMID: 31980749
 
-44. Butcher DT, Alliston T, Weaver VM. A tense situation: forcing tumour progression. Nat Rev Cancer. 2009;9(2):108-122. doi:10.1038/nrc2544
+44. Butcher DT, Alliston T, Weaver VM. A tense situation: forcing tumour progression. Nat Rev Cancer. 2009;9(2):108-22. doi:10.1038/nrc2544. PMID: 19165226
 
-45. Aguirre-Ghiso JA. Models, mechanisms and clinical evidence for cancer dormancy. Nat Rev Cancer. 2007;7(11):834-846. doi:10.1038/nrc2256
+45. Aguirre-Ghiso JA. Models, mechanisms and clinical evidence for cancer dormancy. Nat Rev Cancer. 2007;7(11):834-46. doi:10.1038/nrc2256. PMID: 17957189
 
-46. Sosa MS, Bragado P, Aguirre-Ghiso JA. Mechanisms of disseminated cancer cell dormancy: an awakening field. Nat Rev Cancer. 2014;14(9):611-622. doi:10.1038/nrc3793
+46. Sosa MS, Bragado P, Aguirre-Ghiso JA. Mechanisms of disseminated cancer cell dormancy: an awakening field. Nat Rev Cancer. 2014;14(9):611-22. doi:10.1038/nrc3793. PMID: 25118602
 
-47. Massagué J, Obenauf AC. Metastatic colonization by circulating tumour cells. Nature. 2016;529(7586):298-306. doi:10.1038/nature17038
+47. Massagué J, Obenauf AC. Metastatic colonization by circulating tumour cells. Nature. 2016;529(7586):298-306. doi:10.1038/nature17038. PMID: 26791720
 
-48. Giancotti FG. Mechanisms governing metastatic dormancy and reactivation. Cell. 2013;155(4):750-764. doi:10.1016/j.cell.2013.10.029
+48. Giancotti FG. Mechanisms governing metastatic dormancy and reactivation. Cell. 2013;155(4):750-64. doi:10.1016/j.cell.2013.10.029. PMID: 24209616
 
-49. Federal Ministry of Health, Nigeria. Nigeria Standard Treatment Guidelines. 3rd ed. Abuja: Federal Ministry of Health; 2022. Official text is not redistributed by this repository; obtain it from FMoH or an authorised distributor.
+49. Federal Ministry of Health (NG). Nigeria Standard Treatment Guidelines [Internet]. 3rd ed. Abuja: Federal Ministry of Health; 2022 [cited 2026 Sep 20]. Official text is not redistributed by this repository; obtain it from FMoH or an authorised distributor. Launch notice available from: https://fmino.gov.ng/fg-harps-on-effective-use-of-nigeria-standard-treatment-guidelines/
 
-50. Federal Ministry of Information and National Orientation. FG harps on effective use of Nigeria Standard Treatment Guidelines [Internet]. Abuja: FMINO; 2022 Nov 25 [cited 2026 Sep 20]. Available from: https://fmino.gov.ng/fg-harps-on-effective-use-of-nigeria-standard-treatment-guidelines/
+50. Federal Ministry of Information and National Orientation (NG). FG harps on effective use of Nigeria Standard Treatment Guidelines [Internet]. Abuja: Federal Ministry of Information and National Orientation; 2022 Nov 25 [cited 2026 Sep 20]. Available from: https://fmino.gov.ng/fg-harps-on-effective-use-of-nigeria-standard-treatment-guidelines/
 
-51. Federal Ministry of Health, Nigeria. Nigeria Essential Medicines List. 7th ed. Abuja: Federal Ministry of Health; 2020.
+51. Federal Ministry of Health (NG). Nigeria Essential Medicines List [Internet]. 7th ed. Abuja: Federal Ministry of Health; 2020 [cited 2026 Sep 20]. Available from: https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/afro_neml/nigeria-2020.pdf
 
-52. Federal Ministry of Health, Nigeria. Nigeria National Cancer Control Plan 2018–2022. Abuja: Federal Ministry of Health; 2018.
+52. Federal Ministry of Health (NG). Nigeria National Cancer Control Plan 2018-2022 [Internet]. Abuja: Federal Ministry of Health; 2018 [cited 2026 Sep 20]. Available from: https://www.iccp-portal.org/sites/default/files/plans/NCCP_Final%20%5B1%5D.pdf
 
-53. Federal Ministry of Health, Nigeria. National Policy on Chemotherapy Safety (ChemoSafe). Abuja: Federal Ministry of Health; 2021 Jun.
+53. Federal Ministry of Health (NG). National Policy on Chemotherapy Safety (ChemoSafe) [Internet]. Abuja: Federal Ministry of Health; 2021 Jun [cited 2026 Sep 20]. Available from: https://www.nicrat.gov.ng/wp-content/uploads/2023/08/National-Chemosafe-Policy-29-June.pdf
 
-54. Cancer Genome Atlas Network. Comprehensive molecular portraits of human breast tumours. Nature. 2012;490(7418):61-70. doi:10.1038/nature11412
+54. Cancer Genome Atlas Network. Comprehensive molecular portraits of human breast tumours. Nature. 2012;490(7418):61-70. doi:10.1038/nature11412. PMID: 23000897
 
-55. Cancer Genome Atlas Research Network. Comprehensive genomic characterization defines human glioblastoma genes and core pathways. Nature. 2008;455(7216):1061-1068. doi:10.1038/nature07385
+55. Cancer Genome Atlas Research Network. Comprehensive genomic characterization defines human glioblastoma genes and core pathways. Nature. 2008;455(7216):1061-8. doi:10.1038/nature07385. PMID: 18772890
 
-56. Cancer Genome Atlas Research Network. Integrated genomic characterization of pancreatic ductal adenocarcinoma. Cancer Cell. 2017;32(2):185-203.e13. doi:10.1016/j.ccell.2017.07.007
+56. Cancer Genome Atlas Research Network. Integrated Genomic Characterization of Pancreatic Ductal Adenocarcinoma. Cancer Cell. 2017;32(2):185-203.e13. doi:10.1016/j.ccell.2017.07.007. PMID: 28810144
 
-57. Weinstein JN, Collisson EA, Mills GB, Shaw KR, Ozenberger BA, Ellrott K, et al. The Cancer Genome Atlas Pan-Cancer analysis project. Nat Genet. 2013;45(10):1113-1120. doi:10.1038/ng.2764
+57. Weinstein JN, Collisson EA, Mills GB, Shaw KR, Ozenberger BA, Ellrott K, et al. The Cancer Genome Atlas Pan-Cancer analysis project. Nat Genet. 2013;45(10):1113-20. doi:10.1038/ng.2764. PMID: 24071849
 
-58. Grossman RL, Heath AP, Ferretti V, Varmus HE, Lowy DR, Kibbe WA, et al. Toward a shared vision for cancer genomic data. N Engl J Med. 2016;375(12):1109-1112. doi:10.1056/NEJMp1607591
+58. Grossman RL, Heath AP, Ferretti V, Varmus HE, Lowy DR, Kibbe WA, et al. Toward a Shared Vision for Cancer Genomic Data. N Engl J Med. 2016;375(12):1109-12. doi:10.1056/NEJMp1607591. PMID: 27653561
 
-59. Cerami E, Gao J, Dogrusoz U, Gross BE, Sumer SO, Aksoy BA, et al. The cBio Cancer Genomics Portal: an open platform for exploring multidimensional cancer genomics data. Cancer Discov. 2012;2(5):401-404. doi:10.1158/2159-8290.CD-12-0095
+59. Cerami E, Gao J, Dogrusoz U, Gross BE, Sumer SO, Aksoy BA, et al. The cBio cancer genomics portal: an open platform for exploring multidimensional cancer genomics data. Cancer Discov. 2012;2(5):401-4. doi:10.1158/2159-8290.CD-12-0095. PMID: 22588877
 
-60. Edgar R, Domrachev M, Lash AE. Gene Expression Omnibus: NCBI gene expression and hybridization array data repository. Nucleic Acids Res. 2002;30(1):207-210. doi:10.1093/nar/30.1.207
+60. Edgar R, Domrachev M, Lash AE. Gene Expression Omnibus: NCBI gene expression and hybridization array data repository. Nucleic Acids Res. 2002;30(1):207-10. doi:10.1093/nar/30.1.207. PMID: 11752295
 
-61. Barrett T, Wilhite SE, Ledoux P, Evangelista C, Kim IF, Tomashevsky M, et al. NCBI GEO: archive for functional genomics data sets—update. Nucleic Acids Res. 2013;41(Database issue):D991-D995. doi:10.1093/nar/gks1193
+61. Barrett T, Wilhite SE, Ledoux P, Evangelista C, Kim IF, Tomashevsky M, et al. NCBI GEO: archive for functional genomics data sets--update. Nucleic Acids Res. 2013;41(Database issue):D991-5. doi:10.1093/nar/gks1193. PMID: 23193258
 
-62. Puchalski RB, Shah N, Miller J, Dalley R, Nomura SR, Yoon JG, et al. An anatomic transcriptional atlas of human glioblastoma. Science. 2018;360(6389):660-663. doi:10.1126/science.aaf2666
+62. Puchalski RB, Shah N, Miller J, Dalley R, Nomura SR, Yoon JG, et al. An anatomic transcriptional atlas of human glioblastoma. Science. 2018;360(6389):660-663. doi:10.1126/science.aaf2666. PMID: 29748285
 
-63. Rozenblatt-Rosen O, Regev A, Oberdoerffer P, Nawy T, Hupalowska A, Rood JE, et al. The Human Tumor Atlas Network: charting tumor transitions across space and time at single-cell resolution. Cell. 2020;181(2):236-249. doi:10.1016/j.cell.2020.03.053
+63. Rozenblatt-Rosen O, Regev A, Oberdoerffer P, Nawy T, Hupalowska A, Rood JE, et al. The Human Tumor Atlas Network: Charting Tumor Transitions across Space and Time at Single-Cell Resolution. Cell. 2020;181(2):236-249. doi:10.1016/j.cell.2020.03.053. PMID: 32302568
 
-64. ICGC/TCGA Pan-Cancer Analysis of Whole Genomes Consortium. Pan-cancer analysis of whole genomes. Nature. 2020;578(7793):82-93. doi:10.1038/s41586-020-1969-6
+64. ICGC/TCGA Pan-Cancer Analysis of Whole Genomes Consortium. Pan-cancer analysis of whole genomes. Nature. 2020;578(7793):82-93. doi:10.1038/s41586-020-1969-6. PMID: 32025007
 
-\newpage
 
 # Disclaimer
 

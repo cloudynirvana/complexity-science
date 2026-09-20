@@ -47,7 +47,9 @@ Until Pages is on, a crawler can still be pointed at the raw PDF. After merge to
 
 ## Highwire tags present
 
-`scholar/thesis_02.html` includes: `citation_title`, `citation_author` (family, given), `citation_publication_date` (`2026/09/20`), `citation_date`, `citation_online_date`, `citation_year`, `citation_language`, `citation_technical_report_institution`, `citation_technical_report_number`, `citation_fulltext_html_url`, `citation_pdf_url`, `citation_abstract`, repeated `citation_keywords`, plus Dublin Core `dc.title` / `dc.creator` / `dc.date`.
+`scholar/thesis_02.html` includes: `citation_title`, `citation_author` (family, given), `citation_publication_date` (`2026/09/20`), `citation_date`, `citation_online_date`, `citation_year`, `citation_language`, `citation_technical_report_institution`, `citation_technical_report_number`, `citation_fulltext_html_url`, `citation_pdf_url`, `citation_abstract`, repeated `citation_keywords`, one `citation_reference` meta per bibliography entry (full Vancouver string), plus Dublin Core `dc.title` / `dc.creator` / `dc.date`.
+
+Vancouver rules: `docs/CITATION_STYLE.md`.
 
 No DOI is minted here. Do not invent one.
 

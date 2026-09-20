@@ -19,7 +19,7 @@ NSTG touchpoints are **constraints**. They are never numeric scales.
 | `candidate_mechanisms` | mechanism | Hypothesis statements + citation ids + biologic axis |
 | `falsifiers` | mechanism | Every mechanism needs ≥1 |
 | `nstg_touchpoints` | knowledge constraint | Qualitative only; cite FMoH, do not paste NSTG text |
-| `citations` | knowledge or evidence | Vancouver; real DOI for primary/review (no fake DOIs) |
+| `citations` | knowledge or evidence | Vancouver (`docs/CITATION_STYLE.md`); real DOI for primary/review (no fake DOIs) |
 | `disclaimer` | honesty | Must include the hard non-claims |
 
 Forbidden extra keys include `parameters`, `ode`, `dose`, `ec50`,

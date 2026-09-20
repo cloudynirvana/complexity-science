@@ -30,8 +30,9 @@ schedule recommendations.
 2. Fill the schema fields only: `disease`, `systemic_axes`, `observables`,
    `candidate_mechanisms`, `falsifiers`, `nstg_touchpoints`, `citations`,
    `disclaimer`. See `pathology_cases/SCHEMA.md`.
-3. Use **real** Vancouver citations. Primary/review items need a real DOI.
-   Do not invent DOIs. Do not paste NSTG chapter text.
+3. Use **real** Vancouver citations (see `docs/CITATION_STYLE.md`).
+   Primary/review items need a real DOI. Do not invent DOIs. Do not paste
+   NSTG chapter text.
 4. Do **not** add parameters, doses, rates, ODE knobs, or numeric NSTG scales.
 5. Validate and sketch:
 
