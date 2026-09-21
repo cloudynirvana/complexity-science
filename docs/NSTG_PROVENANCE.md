@@ -7,6 +7,8 @@ Federal Ministry of Health, Nigeria. *Nigeria Standard Treatment Guidelines*.
 
 Obtain the official book from FMoH or an authorised distributor.
 **This repository does not bundle, scrape, or quote NSTG verbatim.**
+Cite it as an Internet / government document per `docs/CITATION_STYLE.md`.
+Do not invent a DOI.
 
 Related public policy documents cited on CaseCards (also not redistributed
 as body text):

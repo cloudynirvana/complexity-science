@@ -30,8 +30,9 @@ schedule recommendations.
 2. Fill the schema fields only: `disease`, `systemic_axes`, `observables`,
    `candidate_mechanisms`, `falsifiers`, `nstg_touchpoints`, `citations`,
    `disclaimer`. See `pathology_cases/SCHEMA.md`.
-3. Use **real** Vancouver citations. Primary/review items need a real DOI.
-   Do not invent DOIs. Do not paste NSTG chapter text.
+3. Use **real** Vancouver citations (see `docs/CITATION_STYLE.md`).
+   Primary/review items need a real DOI. Do not invent DOIs. Do not paste
+   NSTG chapter text.
 4. Do **not** add parameters, doses, rates, ODE knobs, or numeric NSTG scales.
 5. Validate and sketch:
 
@@ -72,6 +73,17 @@ starting hypotheses with falsifiers, not validated models.
 
 Read `DISCLAIMER.md` and `docs/NSTG_PROVENANCE.md`. Official NSTG 2022 is
 cited, not redistributed. If a line here conflicts with NSTG, **NSTG wins**.
+
+## Thesis #2 (manuscript)
+
+Full thesis-format computational manuscript (not a clinical study):
+
+- Markdown: `docs/manuscript/thesis_02_complexity_nstg_pathology.md`
+- PDF: `docs/manuscript/thesis_02_complexity_nstg_pathology.pdf`
+- Scholar landing page: `scholar/thesis_02.html`
+- Indexing checklist: `docs/SCHOLAR_THESIS_02.md`
+
+Author: Kelechi Emeka Ogbonna. Date: 2026-09-20.
 
 ## Seed cases
 
