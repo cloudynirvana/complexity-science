@@ -1,0 +1,23 @@
+# Class-level biologic pathway families. Not products. Not doses.
+role: class_level_axes
+entries:
+  - id: metabolic_checkpoint
+    description: Nutrient / lactate / adenosine competition that can exclude effector immunity.
+  - id: immune_exclusion
+    description: Spatial or stromal exclusion of T cells from tumour nests.
+  - id: immune_checkpoint
+    description: Coinhibitory receptor axes studied as class-level research pathways.
+  - id: stromal_barrier
+    description: Desmoplastic or matrix barriers to delivery and immune access.
+  - id: hypoxia_adaptation
+    description: HIF-linked survival and niche adaptation under low oxygen.
+  - id: invasive_niche
+    description: Migratory / infiltrative niche that trades proliferation for invasion.
+  - id: vascular_delivery
+    description: Perfusion and interstitial-transport limits on reaching a target compartment.
+  - id: dormancy_maintenance
+    description: Quiescence, angiogenic, or immune-mediated residual-disease pause.
+  - id: dormancy_awakening
+    description: Signals hypothesized to restart occult residual cells — research only.
+  - id: host_comorbidity
+    description: Nigerian host-context themes that constrain exploration, not parameters.

@@ -1,0 +1,175 @@
+schema_version: "1.0.0"
+id: tnbc_metabolic_immune_exclusion
+title: Triple-negative breast cancer — metabolic–immune exclusion
+disease:
+  name: Triple-negative breast cancer
+  abbreviations: [TNBC]
+  framing: >-
+    Research framing of a heterogeneous epithelial cancer in which metabolic
+    competition and spatial immune exclusion are hypothesized to co-limit
+    effector function. Not a care pathway and not a person-level profile.
+  notes: >-
+    Systemic axes are host–tumour couplings. They are not fitted coefficients.
+disclaimer: >-
+  In-silico / computational research only. Not a medical device, not
+  clinical decision support, not dosing advice, and not a cure. NSTG is a
+  structured clinical-knowledge constraint layer and is never
+  auto-translated into model parameters. Knowledge ≠ Evidence ≠ Mechanism ≠
+  Parameter ≠ Prediction.
+systemic_axes:
+  - id: glycolytic_competition
+    layer: metabolism
+    role: driver
+    description: >-
+      Tumour-cell nutrient consumption is hypothesized to starve infiltrating
+      lymphocytes of metabolic substrates in the same niche.
+  - id: tcell_exclusion
+    layer: immunity
+    role: driver
+    description: >-
+      Stromal and chemokine cues may keep cytotoxic T cells out of tumour
+      nests even when such T cells exist in the patient.
+  - id: host_infection_context
+    layer: host
+    role: constraint
+    description: >-
+      Nigerian infection and anaemia themes constrain how aggressively an
+      immune-axis hypothesis may be explored — as knowledge, not as a rate.
+observables:
+  - id: til_spatial_pattern
+    name: Tumour-infiltrating lymphocyte spatial pattern
+    modality: multiplex histopathology (research)
+    research_only: true
+    notes: Presence at the margin versus the nest is an observable, not a parameter.
+  - id: metabolite_niche
+    name: Local metabolite sketch (lactate, glucose, adenosine class)
+    modality: research metabolomics / imaging mass spectrometry
+    research_only: true
+    notes: A measured profile is evidence. It is not an ODE coefficient.
+candidate_mechanisms:
+  - id: nutrient_starvation_excludes_effectors
+    biologic_axis: metabolic_checkpoint
+    status: hypothesis
+    supporting_citation_ids: [li2019, bianchini2016]
+    nstg_touchpoint_ids: [nstg_immunosuppression]
+    statement: >-
+      Metabolic over-consumption in TNBC niches is a candidate mechanism for
+      excluding or exhausting effector lymphocytes, independent of whether a
+      checkpoint receptor is occupied.
+  - id: stromal_tcell_privilege
+    biologic_axis: immune_exclusion
+    status: hypothesis
+    supporting_citation_ids: [joyce2015, bianchini2016]
+    nstg_touchpoint_ids: [nstg_supportive_referral]
+    statement: >-
+      Stromal cells may enforce immune privilege by physically or chemically
+      excluding T cells from tumour cell nests in a subset of TNBC.
+  - id: checkpoint_axis_as_research_class
+    biologic_axis: immune_checkpoint
+    status: hypothesis
+    supporting_citation_ids: [schmid2018, bianchini2016]
+    nstg_touchpoint_ids: [nstg_immunosuppression, nstg_chemosafe]
+    statement: >-
+      Coinhibitory receptor pathways have been studied as a class in TNBC;
+      that is knowledge of a research axis, not evidence that a product,
+      schedule, or coefficient should be written into a model from this card.
+falsifiers:
+  - id: metabolite_high_tils_function
+    mechanism_ids: [nutrient_starvation_excludes_effectors]
+    if_observed: >-
+      Effector lymphocytes remain metabolically competent and spatially inside
+      nests despite high local lactate or low glucose in the same region.
+    then_reject: >-
+      Nutrient starvation as a sufficient exclusion mechanism for that sample.
+  - id: tils_inside_nests
+    mechanism_ids: [stromal_tcell_privilege]
+    if_observed: >-
+      Cytotoxic T cells abundantly contact tumour cells inside nests while the
+      stroma is intact.
+    then_reject: >-
+      Stromal T-cell privilege as the operative exclusion mechanism.
+  - id: checkpoint_absent_still_excluded
+    mechanism_ids: [checkpoint_axis_as_research_class]
+    if_observed: >-
+      Exclusion and dysfunction persist when the relevant coinhibitory
+      receptors and ligands are absent in that niche.
+    then_reject: >-
+      Coinhibitory-receptor occupancy as the necessary cause of exclusion.
+nstg_touchpoints:
+  - id: nstg_immunosuppression
+    theme: immunosuppression
+    role: constraint
+    source_citation_id: nstg2022
+    constraint_statement: >-
+      Immune-axis exploration must remain compatible with NSTG infection and
+      immunosuppression cautions as knowledge constraints, never as a fitted
+      infection-risk weight or dose cap.
+  - id: nstg_supportive_referral
+    theme: supportive_referral
+    role: constraint
+    source_citation_id: nccp2018
+    constraint_statement: >-
+      Suspected malignancy in NSTG-adjacent national cancer policy is a
+      referral theme. This card does not triage, stage, or treat anyone.
+  - id: nstg_chemosafe
+    theme: chemosafe
+    role: constraint
+    source_citation_id: chemosafe2021
+    constraint_statement: >-
+      Chemotherapy-handling safety is a national policy constraint on how
+      systemic agents are discussed; it is not a pharmacokinetic parameter.
+citations:
+  - id: bianchini2016
+    kind: review
+    epistemic: knowledge
+    doi: "10.1038/nrclinonc.2016.66"
+    pmid: "27184417"
+    vancouver: >-
+      Bianchini G, Balko JM, Mayer IA, Sanders ME, Gianni L. Triple-negative
+      breast cancer: challenges and opportunities of a heterogeneous disease.
+      Nat Rev Clin Oncol. 2016;13(11):674-690. doi:10.1038/nrclinonc.2016.66
+  - id: li2019
+    kind: review
+    epistemic: knowledge
+    doi: "10.1038/s41571-019-0203-7"
+    pmid: "30914826"
+    vancouver: >-
+      Li X, Wenes M, Romero P, Huang SC, Fendt SM, Ho PC. Navigating
+      metabolic pathways to enhance antitumour immunity and immunotherapy.
+      Nat Rev Clin Oncol. 2019;16(7):425-441. doi:10.1038/s41571-019-0203-7
+  - id: joyce2015
+    kind: review
+    epistemic: knowledge
+    doi: "10.1126/science.aaa6204"
+    pmid: "25838376"
+    vancouver: >-
+      Joyce JA, Fearon DT. T cell exclusion, immune privilege, and the tumor
+      microenvironment. Science. 2015;348(6230):74-80.
+      doi:10.1126/science.aaa6204
+  - id: schmid2018
+    kind: primary
+    epistemic: evidence
+    doi: "10.1056/NEJMoa1809615"
+    pmid: "30345906"
+    vancouver: >-
+      Schmid P, Adams S, Rugo HS, Schneeweiss A, Barrios CH, Iwata H, et al.
+      Atezolizumab and nab-paclitaxel in advanced triple-negative breast
+      cancer. N Engl J Med. 2018;379(22):2108-2121. doi:10.1056/NEJMoa1809615
+  - id: nstg2022
+    kind: guideline
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria Standard Treatment
+      Guidelines. 3rd ed. Abuja: Federal Ministry of Health; 2022.
+  - id: nccp2018
+    kind: policy
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. Nigeria National Cancer Control
+      Plan 2018-2022. Abuja: Federal Ministry of Health; 2018.
+  - id: chemosafe2021
+    kind: policy
+    epistemic: knowledge
+    vancouver: >-
+      Federal Ministry of Health, Nigeria. National Policy on Chemotherapy
+      Safety (ChemoSafe). Abuja: Federal Ministry of Health; June 2021.
