@@ -97,3 +97,6 @@ Ogbonna KE. Complexity science and NSTG-guided in-silico pathology dynamics for 
 
 Dedicated deposit (README, THESIS.md, THESIS.pdf, CITATION.cff, DISCLAIMER.md):
 https://github.com/cloudynirvana/thesis-02-complexity-nstg
+
+Copy-ready payload in this repository (for that dedicated root, pending GitHub App write access):
+`docs/deposit/thesis-02-complexity-nstg/`
