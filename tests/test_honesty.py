@@ -30,6 +30,11 @@ def test_seed_disclaimers_and_docs_are_honest() -> None:
     assert "not dosing" in blob
     assert "not a cure" in blob
     assert "never auto-translated" in blob
+    md = thesis.read_text(encoding="utf-8")
+    assert "## 1.3 Problem Statement" in md
+    assert "## 1.4 Justification of the Study" in md
+    assert "## 1.5 Significance of the Study" in md
+    assert "not a source of ODE coefficients" in md
     for path in iter_case_paths(CASES):
         card = load_case(path)
         lowered = card.disclaimer.lower()
@@ -53,4 +58,4 @@ def test_thesis_02_scholar_highwire_tags() -> None:
         assert tag in html
     assert "github.io/complexity-science" in html
     assert "raw.githubusercontent.com" in html
-    assert html.count('name="citation_reference"') == 64
+    assert html.count('name="citation_reference"') == 69
