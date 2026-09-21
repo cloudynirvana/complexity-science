@@ -52,7 +52,7 @@ def test_in_text_and_references_are_bijective() -> None:
     cited, listed = _cited_and_listed()
     assert cited, "no in-text citations found"
     assert cited == set(listed)
-    assert max(listed) == len(listed) == 64
+    assert max(listed) == len(listed) == 69
     assert min(listed) == 1
 
 
@@ -97,6 +97,6 @@ def test_scholar_citation_reference_metas_match() -> None:
 
     parser = _Meta()
     parser.feed(html)
-    assert len(parser.refs) == 64
+    assert len(parser.refs) == 69
     for n, line in listed.items():
         assert parser.refs[n - 1] == line

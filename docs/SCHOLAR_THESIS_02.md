@@ -93,4 +93,7 @@ Commit the regenerated PDF when the Markdown changes.
 
 ## Suggested citation
 
-Ogbonna KE. Complexity science and NSTG-guided in-silico pathology dynamics for biologics pathway exploration. Computational research thesis manuscript. Complexity Science repository; 2026 Sep 20. Available from: https://github.com/cloudynirvana/complexity-science
+Ogbonna KE. Complexity science and NSTG-guided in-silico pathology dynamics for biologics pathway exploration. Computational research thesis manuscript. Complexity Science repository; 2026 Sep 20 (rev. 2026 Sep 21). Available from: https://github.com/cloudynirvana/complexity-science and https://github.com/cloudynirvana/thesis-02-complexity-nstg
+
+Dedicated deposit (README, THESIS.md, THESIS.pdf, CITATION.cff, DISCLAIMER.md):
+https://github.com/cloudynirvana/thesis-02-complexity-nstg

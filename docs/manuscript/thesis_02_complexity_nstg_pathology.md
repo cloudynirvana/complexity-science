@@ -21,13 +21,15 @@ lang: en-GB
 
 **Status.** Computational research thesis manuscript. This is not a clinical study, not a medical device dossier, not clinical decision support (CDS), not a dosing advisor, and not a claim of cure.
 
-**Repository.** `https://github.com/cloudynirvana/complexity-science`
+**Repository.** Implementation: `https://github.com/cloudynirvana/complexity-science`. Dedicated thesis deposit: `https://github.com/cloudynirvana/thesis-02-complexity-nstg`.
 
 **Corresponding objects in this repository.** `pathology_cases/` (CaseCard schema and four seed cases); `pipeline/` (NSTG-gated PathwaySketch explorer); `docs/NSTG_PROVENANCE.md`; `DISCLAIMER.md`.
 
+**Revision.** 21 September 2026: Problem Statement, Justification of the Study, and Significance of the Study added as headed sections (computational research framing; NSTG is a knowledge constraint, not ODE coefficients; this work is not a medical device).
+
 **Relation to other work in this repository.** Pull request #1 explores a compact multi-scale host–burden ordinary differential equation (ODE) with numeric constraint *hints*. This manuscript describes the complementary **data-first** layer: YAML CaseCards, qualitative Nigeria Standard Treatment Guidelines (NSTG) constraints, and an evidence gate that **never** auto-translates NSTG into ODE coefficients. Numeric scales such as `x_cap_scale` and `infection_risk_weight` are treated here as smuggled non-parameters.
 
-**How to read this document.** Official NSTG 2022, the Nigeria Essential Medicines List (2020), the National Cancer Control Plan 2018–2022, and the National Policy on Chemotherapy Safety (ChemoSafe, 2021) are **cited, not redistributed**. No guideline chapter, table, or dosing schedule is reproduced. If any line in this repository conflicts with official NSTG 2022, **NSTG wins**. Bibliographic style is Vancouver / NLM (`docs/CITATION_STYLE.md`).
+**How to read this document.** After the abstract, read the headed **Problem Statement**, **Justification of the Study**, and **Significance of the Study** (sections 1.3–1.5) before the aims. Official NSTG 2022, the Nigeria Essential Medicines List (2020), the National Cancer Control Plan 2018–2022, and the National Policy on Chemotherapy Safety (ChemoSafe, 2021) are **cited, not redistributed**. No guideline chapter, table, or dosing schedule is reproduced. If any line in this repository conflicts with official NSTG 2022, **NSTG wins**. Bibliographic style is Vancouver / NLM (`docs/CITATION_STYLE.md`).
 
 \newpage
 
@@ -44,6 +46,8 @@ The work reported here is an **architectural** computational thesis, not a clini
 Four seed CaseCards were constructed from published knowledge and evidence pointers, not from patient records: triple-negative breast cancer (TNBC) framed as metabolic–immune exclusion [23,28–30]; glioblastoma (GBM) framed as an invasive hypoxic niche [31–34]; pancreatic ductal adenocarcinoma (PDAC) framed as a stromal barrier [37–41]; and dormant / occult residual disease framed explicitly as a research hypothesis space [45–48]. Each card validates against schema version 1.0.0. Across the four cards the explorer emits thirteen ranked hypotheses. Every hypothesis has `parameter_status = refused` and `prediction_status = not_emitted`. Infection- or immunosuppression-themed NSTG touchpoints down-rank immune-axis hypotheses as a qualitative heuristic; the software states that this is not a contraindication and not a parameter. Dedicated tests refuse `parameters`, `ode_params`, `x_cap_scale`, `infection_risk_weight`, dose-like strings, and bare numeric leaves.
 
 Results are architectural. No ODE was integrated in this pipeline. No public dataset was analysed. No effect size, survival, response, or care pathway is claimed. Named public resources — The Cancer Genome Atlas (TCGA) breast, GBM, and pancreatic cohorts; the NCI Genomic Data Commons; cBioPortal; NCBI GEO; the Ivy Glioblastoma Atlas; and the Human Tumor Atlas Network — are listed only as **future binds** [54–63]. They are not used here.
+
+Headed sections state the Problem Statement, Justification of the Study, and Significance of the Study in computational-research terms: NSTG is a knowledge constraint, not a source of ODE coefficients, and this work is not a medical device [65–69].
 
 The contribution is a reusable research object and a closed gate: a CaseCard can be added in under fifteen minutes without editing explorer or ODE code, and NSTG knowledge cannot smuggle itself into a coefficient. That is a complexity-science result about *what must not be computed yet*, not a claim that a biologic pathway has been found.
 
@@ -67,9 +71,47 @@ Those descriptions are knowledge. They are not automatically evidence in a new c
 
 Biologics pathway exploration is often narrated as target discovery: find the receptor, write the affinity, rank the product. In a complex host the relevant question is closer to **control under constraint**. Metabolic competition can starve effectors independently of checkpoint occupancy [27,28]. A desmoplastic gland can prevent a small molecule from arriving [37,38]. A hypoxic pseudopalisade can couple survival to migration [32,33]. A dormant disseminated cell can ignore therapies aimed at cycling compartments [45,46]. Infection, anaemia, HIV care continuity, chemotherapy-handling safety, and specialist referral are host and system constraints in the Nigerian guideline and policy environment [49–53]. They shape what may be *explored*. They do not, by themselves, supply a rate constant.
 
-A control problem of this kind is a complexity-science problem. Weaver distinguished organised complexity from problems of simplicity and from disorganised complexity amenable to statistics alone [1]. Anderson's "more is different" warned that scale introduces new laws rather than larger versions of old ones [2]. Goldenfeld and Kadanoff, and Hartwell and colleagues, restated the lesson for condensed matter and for modular cell biology [3,4]. Kitano's systems-biology programme, and Barabási, Gulbahce and Loscalzo's network medicine, made the same claim for disease: the unit of analysis is a coupled system [5–7]. In health services, Plsek and Greenhalgh, Ahn and colleagues, and Lipsitz argued that reduction to a single protocol step misrepresents care [8–10]. None of those arguments licenses an unfitted ODE as a digital twin, and none licenses a guideline as a coefficient.
+A control problem of this kind is a complexity-science problem. Weaver distinguished organised complexity from problems of simplicity and from disorganised complexity amenable to statistics alone [1]. Anderson's "more is different" warned that scale introduces new laws rather than larger versions of old ones [2]. Goldenfeld and Kadanoff, and Hartwell and colleagues, restated the lesson for condensed matter and for modular cell biology [3,4]. Kitano's systems-biology programme, and Barabási, Gulbahce and Loscalzo's network medicine, made the same claim for disease: the unit of analysis is a coupled system [5–7]. In health services, Plsek and Greenhalgh, Ahn and colleagues, and Lipsitz argued that reduction to a single protocol step misrepresents care [8–10]. None of those arguments licenses an unfitted ODE as a digital twin, and none licenses a guideline as a coefficient. May warned that mathematics in biology is easily abused when a model is treated as the organism [65]. Saltelli and colleagues argued that models must serve society by making limits inspectable, not by converting uncertainty into false precision [66].
 
-## 1.3 What this thesis is
+## 1.3 Problem Statement
+
+Computational oncology routinely collapses five distinct epistemic layers — knowledge, evidence, mechanism, parameter, and prediction — into a single numeric object, so that a guideline sentence, a review article, or a qualitative host constraint is silently rewritten as an ordinary-differential-equation coefficient.
+
+That collapse is the problem this thesis addresses. Complex pathology belongs to Weaver's class of organised complexity: a modest number of coupled host–tumour axes whose geometry and history matter [1–7,18–26]. Biologics pathway exploration in such a system is a **systemic control problem**, not a product-selection problem [23–30,37–41,45–48]. Two complementary errors follow when the five layers are fused.
+
+**Guideline-as-coefficient.** Nigeria Standard Treatment Guidelines (NSTG 2022) and adjacent Nigerian policy documents are structured clinical **knowledge** [49–53]. Mapping them to numeric scales such as `x_cap_scale` or `infection_risk_weight` treats a constraint theme as a fitted — or, worse, unfitted — parameter. A parameter requires physicochemical identification that a YAML hypothesis and a guideline sentence do not supply [11,12,65,66]. NSTG is a knowledge constraint. It is not a source of ODE coefficients.
+
+**Host-as-generic-trial-body.** Omitting NSTG themes — infection, immunosuppression, HIV care continuity, anaemia, chemotherapy-handling safety, specialist referral — writes the host as if Nigerian system-level knowledge did not exist [8–10,49–53]. Organised complexity includes that host. Honouring the host by inventing a weight is the first error; deleting the host is the second.
+
+A third, quieter error is **software-as-care**. Research code that ranks bibliographic hypotheses is not a medical device, not clinical decision support (CDS), and not a dosing advisor. It does not have a medical purpose and it does not drive a clinical decision about a person. Presenting it as a care protocol, a digital twin of a Nigerian clinic, or a cure would be a category error of a different kind [13,14,65,66].
+
+The specific computational gap is therefore this: there is no data-first research object in this setting that (i) lets a contributor author a complex pathological case without editing a solver; (ii) holds NSTG as a qualitative knowledge constraint that **cannot** auto-translate into ODE coefficients, doses, or predictions; and (iii) keeps the evidence gate closed so that parameterisation and prediction are refused rather than silently emitted. This is a problem in computational research architecture. It is not a clinical-care problem, not a device-engineering problem, and not a request for a cure.
+
+## 1.4 Justification of the Study
+
+The study is justified by the mismatch between what complexity science says a pathological system *is* and what computational pipelines usually *emit*.
+
+Weaver, Anderson, Goldenfeld and Kadanoff, Hartwell and colleagues, Kitano, and network medicine locate disease in organised, scale-dependent, modular, interactome-level systems [1–7]. Hallmarks, accessory cells, exclusion, the immunity cycle, and immunotherapy's practical obstacles locate oncology in the same class [18–26]. May warned that mathematics in biology is easily abused when a model is treated as the organism [65]. Saltelli and colleagues argued that models must serve society by making assumptions and limits inspectable [66]. Wolkenhauer asked "why model?" and answered: to make assumptions inspectable [11]. Aldridge, Burke, Lauffenburger and Sorger stated what a physicochemical signalling model actually requires [12]. A CaseCard that has not met those requirements is not entitled to a rate constant.
+
+Health-systems complexity supplies a second justification. Plsek and Greenhalgh, Ahn and colleagues, and Lipsitz treated care organisations as complex adaptive systems [8–10]. NSTG 2022 is system-level knowledge in that sense [49,50]. It is justified as a **constraint layer** because infection, HIV continuity, anaemia, ChemoSafe handling, and referral shape what may be *explored* in a Nigerian research framing [49–53]. It is not justified as a source of ODE coefficients, because a guideline sentence is not a calibrated parameter [12,65,66]. Pull request #1 in the companion modelling experiment explores numeric constraint hints; this thesis is justified as the complementary refusal at the data boundary, so that the two designs cannot launder numbers through YAML.
+
+A third justification is honesty under publication pressure. Ioannidis, Begley and Ellis, and Popper's falsifiability requirement are used here as **negative** design constraints [13–15]: a ranked `research_score` must not be readable as an effect size, and every mechanism must name its own destruction. Peng, and Stodden and colleagues, argued that computational claims should travel with data, code, and explicit limits [68,69]. FAIR principles justify treating the CaseCard as a findable, reusable research object rather than as a slide figure [67]. Those arguments justify a schema that fails closed.
+
+The study is **not** justified as a medical device programme, a Phase II protocol, a regulator-ready dossier, or a replacement for official NSTG. Those would be different objects, with different evidence, different licences, and different accountable authors. This manuscript does not claim them.
+
+## 1.5 Significance of the Study
+
+The significance of this work is architectural and epistemic, not clinical.
+
+**For computational oncology and complexity science.** The thesis makes the five-layer boundary — knowledge, evidence, mechanism, parameter, prediction — machine-enforceable. A contributor cannot paste `ec50`, `10 mg/kg`, or `x_cap_scale` into a CaseCard and obtain a PathwaySketch. That refusal is the result. It operationalises organised complexity as a stop on a mis-specified controller rather than as another state in an ODE [1–7,65,66]. Four control motifs (metabolic–immune exclusion, invasive hypoxic niche, stromal barrier, dormancy) share one schema, showing that motif diversity need not imply solver diversity [23–26,31–34,37–41,45–48].
+
+**For Nigerian guideline-aware research (not care).** NSTG 2022 is present as cited knowledge and as qualitative themes [49–53]. It is absent as a table dump, as an executable protocol, and as a coefficient. The significance is that a computational pipeline can honour Nigerian system context without impersonating the Federal Ministry of Health and without smuggling a weight. If a line in the repository conflicts with official NSTG 2022, NSTG wins.
+
+**For reusable research objects.** A CaseCard can be added in under fifteen minutes without editing explorer or ODE code. Schema, tests, and a closed gate travel with the object [67–69]. Named public datasets (TCGA, GDC, GEO, Ivy GAP, HTAN) are listed only as future binds [54–64], so that a later worker cannot invent a silent analysis in the gap.
+
+**What this significance is not.** This thesis does not diagnose, treat, prevent, or cure anyone. It is not a medical device and not CDS. It does not recommend a biologic product, dose, schedule, or combination. It does not claim that a pathway has been found. Ranked hypotheses are bibliographic starting points awaiting independent falsification. The honest next measurement is an orthogonal assay against a named falsifier — not a tighter toxicity cap, and not a clinic deployment.
+
+## 1.6 What this thesis is
 
 This thesis specifies an in-silico research architecture implemented in `complexity-science` (repository version 0.2.0, CaseCard schema 1.0.0):
 
@@ -81,7 +123,7 @@ This thesis specifies an in-silico research architecture implemented in `complex
 
 The manuscript reports what the software does on those objects. It does not analyse patient data, does not fit parameters, and does not bind public datasets. It is a thesis about honest computational structure for complex pathology.
 
-## 1.4 What this thesis is not
+## 1.7 What this thesis is not
 
 This is not a medical device. It is not CDS. It is not dosing advice. It is not a cure. It is not Phase II. It is not regulator-ready. It is not an executable NSTG protocol. It does not speak for the Federal Ministry of Health, Nigeria, or for any manufacturer. Official NSTG text is not redistributed from this repository [49,50].
 
@@ -457,6 +499,8 @@ Additional organised-complexity motifs — for example myeloid exclusion, tertia
 
 Complex pathology is a systemic control problem in Weaver's sense of organised complexity [1]. Biologics pathway exploration that jumps from a review article to a rate constant has skipped the problem.
 
+Problem Statement, Justification of the Study, and Significance of the Study are stated as computational-research sections: the failure mode is epistemic collapse and guideline-as-coefficient; NSTG 2022 is a knowledge constraint, not a source of ODE coefficients; the work is not a medical device [49,50,65–69].
+
 This thesis contributes a data-first in-silico architecture, implemented and tested in this repository, in which:
 
 - a CaseCard holds knowledge, evidence pointers, mechanisms, falsifiers, and qualitative NSTG constraints;
@@ -473,7 +517,7 @@ The honest next measurement is an orthogonal assay against a named falsifier —
 
 # References
 
-Vancouver / NLM. Policy: `docs/CITATION_STYLE.md`. Journal items were completed from PubMed MEDLINE (authors, NLM abbreviation, volume, issue, pages, PMID) on 20 September 2026. Printed DOIs were previously resolved on the Crossref Works API the same day; unverified DOIs are not printed. Guideline and policy items are Internet citations with a cited date. Books have no DOI. No DOI was invented.
+Vancouver / NLM. Policy: `docs/CITATION_STYLE.md`. Journal items 1–64 were completed from PubMed MEDLINE (authors, NLM abbreviation, volume, issue, pages, PMID) on 20 September 2026; items 65–69 were completed the same way on 21 September 2026. Printed DOIs were resolved on the Crossref Works API on those dates; unverified DOIs are not printed. Guideline and policy items are Internet citations with a cited date. Books have no DOI. No DOI was invented.
 
 1. Weaver W. Science and complexity. Am Sci. 1948;36(4):536-44. PMID: 18882675. Available from: https://www.jstor.org/stable/27826254
 
@@ -602,6 +646,16 @@ Vancouver / NLM. Policy: `docs/CITATION_STYLE.md`. Journal items were completed 
 63. Rozenblatt-Rosen O, Regev A, Oberdoerffer P, Nawy T, Hupalowska A, Rood JE, et al. The Human Tumor Atlas Network: Charting Tumor Transitions across Space and Time at Single-Cell Resolution. Cell. 2020;181(2):236-249. doi:10.1016/j.cell.2020.03.053. PMID: 32302568
 
 64. ICGC/TCGA Pan-Cancer Analysis of Whole Genomes Consortium. Pan-cancer analysis of whole genomes. Nature. 2020;578(7793):82-93. doi:10.1038/s41586-020-1969-6. PMID: 32025007
+
+65. May RM. Uses and abuses of mathematics in biology. Science. 2004;303(5659):790-3. doi:10.1126/science.1094442. PMID: 14764866
+
+66. Saltelli A, Bammer G, Bruno I, Charters E, Di Fiore M, Didier E, et al. Five ways to ensure that models serve society: a manifesto. Nature. 2020;582(7813):482-484. doi:10.1038/d41586-020-01812-9. PMID: 32581374
+
+67. Wilkinson MD, Dumontier M, Aalbersberg IJ, Appleton G, Axton M, Baak A, et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci Data. 2016;3:160018. doi:10.1038/sdata.2016.18. PMID: 26978244
+
+68. Peng RD. Reproducible research in computational science. Science. 2011;334(6060):1226-7. doi:10.1126/science.1213847. PMID: 22144613
+
+69. Stodden V, McNutt M, Bailey DH, Deelman E, Gil Y, Hanson B, et al. Enhancing reproducibility for computational methods. Science. 2016;354(6317):1240-1241. doi:10.1126/science.aah6168. PMID: 27940837
 
 
 # Disclaimer

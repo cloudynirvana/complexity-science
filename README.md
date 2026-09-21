@@ -76,14 +76,18 @@ cited, not redistributed. If a line here conflicts with NSTG, **NSTG wins**.
 
 ## Thesis #2 (manuscript)
 
-Full thesis-format computational manuscript (not a clinical study):
+Full thesis-format computational manuscript (not a clinical study). Headed
+sections include **Problem Statement**, **Justification of the Study**, and
+**Significance of the Study**. NSTG is a knowledge constraint, not a source
+of ODE coefficients. Not a medical device.
 
 - Markdown: `docs/manuscript/thesis_02_complexity_nstg_pathology.md`
 - PDF: `docs/manuscript/thesis_02_complexity_nstg_pathology.pdf`
 - Scholar landing page: `scholar/thesis_02.html`
 - Indexing checklist: `docs/SCHOLAR_THESIS_02.md`
+- Dedicated deposit: `https://github.com/cloudynirvana/thesis-02-complexity-nstg`
 
-Author: Kelechi Emeka Ogbonna. Date: 2026-09-20.
+Author: Kelechi Emeka Ogbonna. Date: 2026-09-20. Revision: 2026-09-21.
 
 ## Seed cases
 
