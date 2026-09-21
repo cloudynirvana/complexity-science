@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you cite this computational research thesis, please use the metadata below. No DOI is minted here; do not invent one."
+type: thesis
+title: "Complexity Science and NSTG-Guided In-Silico Pathology Dynamics for Biologics Pathway Exploration"
+authors:
+  - family-names: Ogbonna
+    given-names: Kelechi Emeka
+abstract: >-
+  Complex pathological systems sit in Weaver's class of organised complexity.
+  This computational research thesis — not a clinical study, not a medical
+  device — specifies a data-only in-silico pipeline in which a YAML CaseCard
+  holds knowledge, evidence pointers, candidate mechanisms, falsifiers, and
+  qualitative Nigeria Standard Treatment Guidelines (NSTG) constraints.
+  NSTG is a knowledge constraint, not a source of ODE coefficients, doses, or
+  predictions. Headed sections state the Problem Statement, Justification of
+  the Study, and Significance of the Study. The evidence gate never opens.
+keywords:
+  - complexity science
+  - in-silico pathology
+  - NSTG
+  - CaseCard
+  - PathwaySketch
+  - knowledge constraint
+  - parameter smuggling
+  - biologics pathway exploration
+license: MIT
+date-released: "2026-09-20"
+url: "https://github.com/cloudynirvana/thesis-02-complexity-nstg"
+repository-code: "https://github.com/cloudynirvana/complexity-science"
+preferred-citation:
+  type: thesis
+  title: "Complexity Science and NSTG-Guided In-Silico Pathology Dynamics for Biologics Pathway Exploration"
+  authors:
+    - family-names: Ogbonna
+      given-names: Kelechi Emeka
+  year: 2026
+  month: 9
+  url: "https://github.com/cloudynirvana/thesis-02-complexity-nstg"
+  notes: "Computational research thesis manuscript. Not a medical device. NSTG is a knowledge constraint, not ODE coefficients. Revision 2026-09-21."
