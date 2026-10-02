@@ -89,6 +89,34 @@ of ODE coefficients. Not a medical device.
 
 Author: Kelechi Emeka Ogbonna. Date: 2026-09-20. Revision: 2026-09-21.
 
+## Thesis #3 (manuscript): identifiability as the evidence gate
+
+*What the Measurement Allows: Identifiability as the Evidence Gate for
+Metabolic Tumour–Immune Dynamics.* Thesis #2 keeps the evidence gate closed.
+Thesis #3 states, for one dimensionless glucose-competition model, the
+computable condition under which a single parameter may be admitted:
+structural rank, a Cramér–Rao bound, and a two-sided profile likelihood, all
+for a declared experiment.
+
+Main results (dimensionless model, not fitted to data):
+
+- Tumour establishment does not depend on glucose competition. Competition
+  switches immune control off through a fold (*u*\* ≈ 1.02) while making the
+  escaped tumour smaller.
+- From tumour burden alone, the kill rate is **structurally** unidentifiable
+  (exact scaling symmetry), and no parameter reaches a 10% CV bound.
+- Measuring glucose opens tumour uptake. Measuring effectors breaks the
+  symmetry. Even with everything measured, the kill rate stays refused
+  (one-sided profile; about 700 sample times needed).
+
+- Manuscript: `docs/manuscript/thesis_03_identifiability_gate.md` / `.pdf`
+- Code: `glucose_competition/` (model, regimes, identifiability, `gate.py`)
+- Reproduce every number and figure: `python -m glucose_competition.analysis`
+- Rebuild the PDF: `docs/manuscript/src/build_pdf.sh`
+
+`pathology_cases/` and `pipeline/` still import no numerical library.
+Computational research only; not a medical device.
+
 ## Seed cases
 
 | ID | Research framing |

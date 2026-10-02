@@ -72,7 +72,7 @@ def steady_states(p: Params, n_starts=200, seed=0):
     rng = np.random.default_rng(seed)
     found = []
     for _ in range(n_starts):
-        y0 = rng.uniform([0, 0, 0], [1.5, 6, 4])
+        y0 = np.array([rng.uniform(0, 1.5), 10 ** rng.uniform(-3, 3), 10 ** rng.uniform(-4, 1)])
         y, _info, ier, _ = fsolve(lambda z: rhs(0, z, p), y0, full_output=True, xtol=1e-12)
         if ier != 1 or np.any(y < -1e-9) or np.max(np.abs(rhs(0, y, p))) > 1e-8:
             continue
