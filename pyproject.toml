@@ -28,7 +28,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.4"]
+dev = ["pytest>=7.4", "numpy>=1.26", "scipy>=1.11"]
+model = ["numpy>=1.26", "scipy>=1.11"]
 
 [project.scripts]
 complexity-science = "pipeline.cli:main"
