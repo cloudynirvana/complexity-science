@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+message: "If you use this repository or cite the manuscripts in it, please use the metadata below."
+title: "Complexity Science: gated in-silico research objects for complex pathology"
+type: software
+version: "0.3.0"
+license: MIT
+repository-code: "https://github.com/cloudynirvana/complexity-science"
+# ORCID: add `orcid: "https://orcid.org/0000-0000-0000-0000"` under the author below once registered.
+authors:
+  - family-names: Ogbonna
+    given-names: Kelechi Emeka
+abstract: >-
+  Computational research software and manuscripts on honest parameterisation in
+  complex pathology. The CaseCard pipeline holds knowledge, evidence pointers,
+  candidate mechanisms, falsifiers and qualitative Nigeria Standard Treatment
+  Guidelines (NSTG) constraints behind an evidence gate that refuses to turn any
+  of them into model parameters (Thesis #2). The glucose-competition package
+  replaces that permanent refusal with a computable admission criterion:
+  structural identifiability, a Cramer-Rao bound, and a two-sided profile
+  likelihood for a declared experiment (Thesis #3). Computational research only.
+  Not a medical device, not clinical decision support, not dosing advice.
+keywords:
+  - complexity science
+  - in-silico pathology
+  - identifiability
+  - profile likelihood
+  - evidence gate
+  - tumour-immune dynamics
+  - metabolic competition
+  - NSTG
+  - parameter smuggling
+  - reproducible research
+references:
+  - type: thesis
+    title: "Complexity Science and NSTG-Guided In-Silico Pathology Dynamics for Biologics Pathway Exploration"
+    authors:
+      - family-names: Ogbonna
+        given-names: Kelechi Emeka
+    year: 2026
+    month: 9
+    notes: "Thesis #2. Computational research thesis manuscript; not peer reviewed."
+    url: "https://github.com/cloudynirvana/complexity-science/blob/main/docs/manuscript/thesis_02_complexity_nstg_pathology.pdf"
+  - type: thesis
+    title: "What the Measurement Allows: Identifiability as the Evidence Gate for Metabolic Tumour-Immune Dynamics"
+    authors:
+      - family-names: Ogbonna
+        given-names: Kelechi Emeka
+    year: 2026
+    month: 10
+    notes: "Thesis #3. Computational research thesis manuscript; not peer reviewed."
+    url: "https://github.com/cloudynirvana/complexity-science/blob/main/docs/manuscript/thesis_03_identifiability_gate.pdf"
