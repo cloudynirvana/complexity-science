@@ -109,10 +109,16 @@ Main results (dimensionless model, not fitted to data):
   symmetry. Even with everything measured, the kill rate stays refused
   (one-sided profile; about 700 sample times needed).
 
+![The evidence gate](docs/manuscript/thesis_03_figures/fig1_workflow.png)
+
 - Manuscript: `docs/manuscript/thesis_03_identifiability_gate.md` / `.pdf`
 - Code: `glucose_competition/` (model, regimes, identifiability, `gate.py`)
 - Reproduce every number and figure: `python -m glucose_competition.analysis`
 - Rebuild the PDF: `docs/manuscript/src/build_pdf.sh`
+- The schematic above is generated from `results.json`, so its verdict panel
+  cannot drift from the computed results; a test enforces this.
+
+Repository assessment and what should happen next: `docs/REVIEW_AND_ROADMAP.md`.
 
 `pathology_cases/` and `pipeline/` still import no numerical library.
 Computational research only; not a medical device.

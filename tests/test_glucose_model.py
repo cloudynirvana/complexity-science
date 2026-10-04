@@ -47,3 +47,21 @@ def test_gate_never_opens_kill_rate_even_with_full_observation():
     dec = decide(REFERENCE, Experiment(("T", "G", "E"), tuple(TIMES)), confirm_with_profile=False)
     assert dec.status["k"] != OPEN
     assert "u" in dec.opened()
+
+
+def test_workflow_figure_matches_computed_verdicts():
+    # The schematic's verdict panel is generated from the gate, not hand-typed.
+    from glucose_competition.gate import Experiment, decide
+    from glucose_competition.workflow_figure import PARAMS, VERDICT, build_svg
+
+    gate = {
+        obs: decide(REFERENCE, Experiment(tuple(obs.split(",")), tuple(TIMES)),
+                    confirm_with_profile=False).status
+        for obs in ("T", "T,G,E")
+    }
+    svg = build_svg(gate)
+    assert gate["T"]["k"] == "refused:structural"
+    for p in PARAMS:
+        assert p in svg
+    # Codes actually used must come from the verdict vocabulary.
+    assert all(VERDICT[v][1] in svg for col in gate.values() for v in col.values())

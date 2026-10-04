@@ -178,6 +178,10 @@ For a model, a parameter vector and a declared experiment (observables, times, n
 
 The threshold of 0.10 is a convention, and the code takes it as an argument. The verdict belongs to the experiment, not to the biology.
 
+Figure 1 shows the procedure and, on the right, the verdict it returns for every parameter of the model in Section 3 under two measurement sets. The panel is generated from `results.json`, so it cannot drift from the computed results.
+
+![**Figure 1.** The evidence gate. A parameter is admitted only for a declared experiment, and only if it passes all three tests: it must lie off the null space of the sensitivity matrix (structural), its Cramér–Rao coefficient-of-variation bound must fall below the stated threshold (practical), and its profile likelihood must cross the 95% level on both sides (shape). The right-hand panel gives the verdicts for the tumour / effector / glucose model: tumour counts alone admit nothing, and the kill rate *k* is refused under every design examined.](thesis_03_figures/fig1_workflow.png)
+
 ## 4.8 Software
 
 Python ≥ 3.10, NumPy, SciPy (`solve_ivp` LSODA, `fsolve`, `least_squares`) [22], Matplotlib. The package `glucose_competition/` is separate from Thesis #2's `pathology_cases/` and `pipeline/`, which still import no numerical library. All seeds and grids are fixed. The full analysis takes about one minute on a laptop core, and the gate with profile confirmation takes about one minute per design. 40 automated tests cover non-negativity, equilibrium residuals, the closed-form tumour-free state, bistability at the reference point, the exact symmetry, the rank change when *E* is measured, and the gate's refusal of *k*.
@@ -211,37 +215,37 @@ At the reference point there are four non-negative equilibria:
 
 The immune-held state keeps glucose high and effectors active, and it resembles the equilibrium phase of immunoediting [12,13]. The escape state has depleted glucose by 89%, and its effectors sit at baseline. A saddle separates them.
 
-![**Figure 1.** Regimes. (a) Stable tumour burdens along tumour glucose uptake *u*. The immune-held branch (blue) ends in a fold near *u*\* ≈ 1.02, and the escape branch (green) falls roughly as 1/*u*. The grey line marks the reference *u*. (b, c) Regime maps in (*u*, *h*) and (*u*, *b*) around the reference point (open circle).](thesis_03_figures/fig1_regimes.png)
+![**Figure 2.** Regimes. (a) Stable tumour burdens along tumour glucose uptake *u*. The immune-held branch (blue) ends in a fold near *u*\* ≈ 1.02, and the escape branch (green) falls roughly as 1/*u*. The grey line marks the reference *u*. (b, c) Regime maps in (*u*, *h*) and (*u*, *b*) around the reference point (open circle).](thesis_03_figures/fig2_regimes.png)
 
 ## 5.3 Glucose competition is a switch for control, not a dial on burden
 
-Along *u* (Figure 1a), the immune-held state exists from the lowest value tested (0.03) up to a fold at **u\* ≈ 1.02**. There it merges with the saddle and vanishes. Beyond the fold only escape remains. Competition therefore acts as a switch: it removes immune control abruptly, with hysteresis, the signature of a critical transition [23].
+Along *u* (Figure 2a), the immune-held state exists from the lowest value tested (0.03) up to a fold at **u\* ≈ 1.02**. There it merges with the saddle and vanishes. Beyond the fold only escape remains. Competition therefore acts as a switch: it removes immune control abruptly, with hysteresis, the signature of a critical transition [23].
 
 The escaped burden moves the other way. It is 310 at *u* = 0.03, 16.2 at *u* = 0.58, 8.9 just past the fold and 1.5 at *u* = 6.1. A more glycolytic tumour depletes the pool that feeds its own growth, so it settles lower. The immune-held burden rises only slightly, from 0.59 to about 1.0 at the fold. In this model, then, glucose competition does not make the tumour bigger. It removes the immune-held alternative. Any measurement of "more glycolysis, more tumour" would therefore falsify the model as stated.
 
-In the (*u*, *h*) plane (Figure 1b), of 1,080 grid cells 408 are immune-held, 307 bistable and 365 escape. Bistability occupies a band of intermediate effector fuel sensitivity, *h* ≈ 0.7–4.5 at low *u*. Below it effectors are fuel-robust and hold the tumour. Above it they are fuel-starved and cannot. The band narrows as *u* rises. In (*u*, *b*) (Figure 1c) bistability needs strong antigen-driven expansion, *b* above about 3–4, and the immune-held regime appears alone only at *b* above about 12.
+In the (*u*, *h*) plane (Figure 2b), of 1,080 grid cells 408 are immune-held, 307 bistable and 365 escape. Bistability occupies a band of intermediate effector fuel sensitivity, *h* ≈ 0.7–4.5 at low *u*. Below it effectors are fuel-robust and hold the tumour. Above it they are fuel-starved and cannot. The band narrows as *u* rises. In (*u*, *b*) (Figure 2c) bistability needs strong antigen-driven expansion, *b* above about 3–4, and the immune-held regime appears alone only at *b* above about 12.
 
 ## 5.4 The basin of immune control is bounded on both sides
 
-Even where the immune-held state exists, a trajectory reaches it only from a bounded region of initial conditions (Figure 2). Of 1,600 initial conditions, 202 (12.6%) end immune-held. Three features matter.
+Even where the immune-held state exists, a trajectory reaches it only from a bounded region of initial conditions (Figure 3). Of 1,600 initial conditions, 202 (12.6%) end immune-held. Three features matter.
 
 1. **The naive host escapes.** The tumour-free effector baseline *s*/*m* = 0.0012 lies wholly outside the basin. A tumour seeded into a naive host escapes at every tested size. Reaching immune control requires effectors primed roughly 50–800-fold above baseline (*E*(0) ≈ 0.06–1).
 2. **Small seeds escape.** Below *T*(0) ≈ 0.2 every seed escapes, whatever the effector level. A small tumour stimulates too little expansion (*T*/(1+*T*) is small), effectors decay at rate *m* before the tumour grows, and the tumour then outgrows control. This is immunological sneaking through, previously reported in the Kuznetsov–Perelson model [4].
 3. **Strong initial responses can also escape.** At *E*(0) = 1.6 and *T*(0) = 1–3, effectors drive the tumour down to *T* ≈ 0.07–0.10 within about four time units, against a minimum of 0.55 from a moderate start (*E*(0) = 0.4). Expansion then collapses with the antigen, effectors decay, and the remnant sneaks through to the escape state. Overshoot followed by sneaking through is a model prediction that, to our knowledge, has not been tested here or elsewhere. We flag it as a hypothesis, not a finding about biology.
 
-![**Figure 2.** Basin of immune control at the reference point, over initial tumour burden and initial effector level. Blue: trajectories ending immune-held. Green: escape. The dashed line is the naive effector baseline *s*/*m*.](thesis_03_figures/fig2_basin.png)
+![**Figure 3.** Basin of immune control at the reference point, over initial tumour burden and initial effector level. Blue: trajectories ending immune-held. Green: escape. The dashed line is the naive effector baseline *s*/*m*.](thesis_03_figures/fig3_basin.png)
 
 ## 5.5 Negative results and a correction
 
 Three results did not support the hypotheses that motivated them, and they are reported here.
 
 - **Bistability is not generic.** In a 400-draw random sweep over all eight parameters (log-uniform ranges in `regime_sweep.py`), one draw (0.25%) gave two stable states. With weak antigen-driven expansion (*b* = 1.2), a 120-point grid over *h* ∈ [0.5, 8], *k* ∈ [6, 25] and *u* ∈ [0.5, 40] produced no bistability at all. The outcome there was set entirely by the sign of λ, and *u* changed nothing but the burden.
-- **Fuel asymmetry alone is not sufficient.** The hypothesis that escape needs effectors to be more glucose-sensitive than the tumour (*h* > 1) holds only where antigen-driven expansion is strong (Figure 1b–c). Without strong expansion, *h* has no switching role.
+- **Fuel asymmetry alone is not sufficient.** The hypothesis that escape needs effectors to be more glucose-sensitive than the tumour (*h* > 1) holds only where antigen-driven expansion is strong (Figure 2b–c). Without strong expansion, *h* has no switching role.
 - **Correction of an exploratory claim.** An earlier, simulation-based classifier in this project's exploratory sweep reported sustained oscillations in about 4% of draws. On re-analysis with more root-finding starts, every flagged case had a stable equilibrium whose slowest mode decays with real part between about −0.002 and −0.06. Most were damped spirals, and the simulations had simply not finished their transients. No limit cycle was confirmed. The claim is withdrawn.
 
 ## 5.6 Tumour burden alone cannot identify the kill rate
 
-The symmetry of Section 4.4 holds numerically to 4.3 × 10⁻¹⁰ in log *T* at *c* = 3, and log *E* shifts by exactly log *c* (deviation 3 × 10⁻⁹). The tumour-only sensitivity matrix has rank 7 of 8. The kill rate *k*, effector glucose uptake *v* and effector influx *s* load on the null direction, and their tumour-only profile likelihood is flat to numerical precision (Δχ² = 0.000 at all 13 points; Figure 4). The data can only fix combinations invariant under the symmetry, such as *k*·*s* and *v*·*s*.
+The symmetry of Section 4.4 holds numerically to 4.3 × 10⁻¹⁰ in log *T* at *c* = 3, and log *E* shifts by exactly log *c* (deviation 3 × 10⁻⁹). The tumour-only sensitivity matrix has rank 7 of 8. The kill rate *k*, effector glucose uptake *v* and effector influx *s* load on the null direction, and their tumour-only profile likelihood is flat to numerical precision (Δχ² = 0.000 at all 13 points; Figure 5). The data can only fix combinations invariant under the symmetry, such as *k*·*s* and *v*·*s*.
 
 The result is structural. No number of tumour measurements at any noise level determines *k*. A kill rate fitted to tumour curves alone in this model class is the optimiser's choice of *c*, not a measurement.
 
@@ -261,7 +265,7 @@ The result is structural. No number of tumour measurements at any noise level de
 
 *Table 1. Fisher CV bounds, one arm, 20 sample times, 5% noise. Bold: CV < 0.10.*
 
-![**Figure 3.** Fisher CV bounds per parameter and observation set. A tick marks bounds below the 0.10 gate threshold.](thesis_03_figures/fig3_identifiability.png)
+![**Figure 4.** Fisher CV bounds per parameter and observation set. A tick marks bounds below the 0.10 gate threshold.](thesis_03_figures/fig4_identifiability.png)
 
 Four features stand out:
 
@@ -274,13 +278,13 @@ A three-arm design (seeding at *T*(0) = 0.05, 1 and 20) improves every finite bo
 
 ## 5.8 The Fisher bound is optimistic for the kill rate
 
-With all three states measured, the Fisher bound for *k* is 0.59, a symmetric interval. The profile likelihood (Figure 4) disagrees. It rises steeply above the true value and crosses the 95% threshold between +0.50 and +0.75 log units. Below the true value it rises only to Δχ² = 1.86 at a 4.5-fold reduction. So *k* has an upper bound and **no lower bound**. A fitted kill rate could be much smaller than the truth without the data objecting, but not much larger. This asymmetry is what the gate's third condition is there to catch.
+With all three states measured, the Fisher bound for *k* is 0.59, a symmetric interval. The profile likelihood (Figure 5) disagrees. It rises steeply above the true value and crosses the 95% threshold between +0.50 and +0.75 log units. Below the true value it rises only to Δχ² = 1.86 at a 4.5-fold reduction. So *k* has an upper bound and **no lower bound**. A fitted kill rate could be much smaller than the truth without the data objecting, but not much larger. This asymmetry is what the gate's third condition is there to catch.
 
-![**Figure 4.** Expected profile likelihood of the kill rate *k*. Orange: tumour burden only (flat, structurally unidentifiable). Blue: *T*, *G* and *E* measured (bounded above, unbounded below within the grid). Dashed: 95% threshold.](thesis_03_figures/fig4_profile_k.png)
+![**Figure 5.** Expected profile likelihood of the kill rate *k*. Orange: tumour burden only (flat, structurally unidentifiable). Blue: *T*, *G* and *E* measured (bounded above, unbounded below within the grid). Dashed: 95% threshold.](thesis_03_figures/fig5_profile_k.png)
 
 ## 5.9 The cost of opening the gate
 
-Where a parameter is identifiable, its bound falls as 1/√*n* in the number of sample times (Figure 5). The cost to bring each parameter below 0.10 with *T*, *G* and *E* measured is:
+Where a parameter is identifiable, its bound falls as 1/√*n* in the number of sample times (Figure 6). The cost to bring each parameter below 0.10 with *T*, *G* and *E* measured is:
 
 - *u*: under 10 sample times;
 - *b*: about 40;
@@ -289,7 +293,7 @@ Where a parameter is identifiable, its bound falls as 1/√*n* in the number of 
 
 For the kill rate that means over two thousand paired measurements of tumour, glucose and intratumoural effectors in one time course. The gate's verdict on *k* is therefore not "refused for now". It is "refused at any experimental scale that is realistic for a single in vivo time course".
 
-![**Figure 5.** Fisher CV bound against sample times per observable, with *T*, *G* and *E* measured. Dashed: gate threshold.](thesis_03_figures/fig5_scaling.png)
+![**Figure 6.** Fisher CV bound against sample times per observable, with *T*, *G* and *E* measured. Dashed: gate threshold.](thesis_03_figures/fig6_scaling.png)
 
 ## 5.10 Gate verdicts
 

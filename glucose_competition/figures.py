@@ -59,7 +59,7 @@ def fig_regimes(res, out: Path, colours):
     _regime_panel(axs[2], rm["u"], rm["b"], rm["u_b"], colours, "tumour glucose uptake u",
                   "antigen-driven expansion b", (ref["u"], ref["b"]))
     axs[2].set_title("c  Regimes in (u, b)")
-    fig.tight_layout(); fig.savefig(out / "fig1_regimes.png"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(out / "fig2_regimes.png"); plt.close(fig)
 
 
 def fig_basin(res, out: Path):
@@ -78,7 +78,7 @@ def fig_basin(res, out: Path):
     ax.text(b["T0"][2], b["E0"][-4], "escape", fontsize=8,
             bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.85))
     ax.set_title("Basin of immune control")
-    fig.tight_layout(); fig.savefig(out / "fig2_basin.png"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(out / "fig3_basin.png"); plt.close(fig)
 
 
 def fig_identifiability(res, out: Path):
@@ -101,7 +101,7 @@ def fig_identifiability(res, out: Path):
     ax.set_xlabel("observables measured"); ax.set_title("CV bound per parameter (✓ = gate opens, CV < 0.10)")
     cb = fig.colorbar(im, ax=ax, shrink=0.8); cb.set_label("log10 CV bound")
     for s in ax.spines.values(): s.set_visible(False)
-    fig.tight_layout(); fig.savefig(out / "fig3_identifiability.png"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(out / "fig4_identifiability.png"); plt.close(fig)
 
 
 def fig_scaling(res, out: Path):
@@ -116,7 +116,7 @@ def fig_scaling(res, out: Path):
     ax.set_xscale("log"); ax.set_yscale("log")
     ax.set_xlabel("sample times per observable (T, G, E measured)"); ax.set_ylabel("CV bound")
     ax.grid(True, color=GRID, lw=0.6); ax.set_title("Cost of opening the gate grows as 1/√n")
-    fig.tight_layout(); fig.savefig(out / "fig5_scaling.png"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(out / "fig6_scaling.png"); plt.close(fig)
 
 
 def fig_profile(res, out: Path):
@@ -129,11 +129,13 @@ def fig_profile(res, out: Path):
     ax.set_xlabel("Δ log k from true value"); ax.set_ylabel("profile Δχ²")
     ax.grid(True, color=GRID, lw=0.6); ax.set_title("Profile likelihood of kill rate k")
     ax.set_xlim(-1.6, 2.4)
-    fig.tight_layout(); fig.savefig(out / "fig4_profile_k.png"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(out / "fig5_profile_k.png"); plt.close(fig)
 
 
 def draw_all(res, out: Path):
     from .analysis import REGIME_COLOURS
+    from .workflow_figure import draw as draw_workflow
+    draw_workflow(out / "results.json", out)
     fig_regimes(res, out, REGIME_COLOURS)
     fig_basin(res, out)
     fig_identifiability(res, out)
