@@ -1,9 +1,9 @@
-"""Resolve [@key] citations in thesis_03.src.md into Vancouver numbering.
+"""Resolve [@key] citations in a thesis source file into Vancouver numbering.
 
 Numbers follow order of first appearance; adjacent runs collapse (e.g. [3-5]).
 Fails if a key is missing from the reference file or a reference is never cited.
 
-    python docs/manuscript/src/build_thesis_03.py
+    python docs/manuscript/src/build_thesis.py thesis_03 thesis_03_identifiability_gate
 """
 from __future__ import annotations
 
@@ -14,9 +14,11 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
-SRC = HERE / "thesis_03.src.md"
-REFS = HERE / "thesis_03_refs.yaml"
-OUT = HERE.parent / "thesis_03_identifiability_gate.md"
+STEM = sys.argv[1] if len(sys.argv) > 1 else "thesis_03"
+OUT_NAME = sys.argv[2] if len(sys.argv) > 2 else "thesis_03_identifiability_gate"
+SRC = HERE / f"{STEM}.src.md"
+REFS = HERE / f"{STEM}_refs.yaml"
+OUT = HERE.parent / f"{OUT_NAME}.md"
 
 CITE = re.compile(r"\[(@[\w-]+(?:;\s*@[\w-]+)*)\]")
 

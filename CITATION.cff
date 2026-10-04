@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this repository or cite the manuscripts in it, please use the metadata below."
 title: "Complexity Science: gated in-silico research objects for complex pathology"
 type: software
-version: "0.3.0"
+version: "0.4.0"
 license: MIT
 repository-code: "https://github.com/cloudynirvana/complexity-science"
 # ORCID: add `orcid: "https://orcid.org/0000-0000-0000-0000"` under the author below once registered.
@@ -27,6 +27,8 @@ keywords:
   - evidence gate
   - tumour-immune dynamics
   - metabolic competition
+  - malaria
+  - artemisinin resistance
   - NSTG
   - parameter smuggling
   - reproducible research
@@ -49,3 +51,12 @@ references:
     month: 10
     notes: "Thesis #3. Computational research thesis manuscript; not peer reviewed."
     url: "https://github.com/cloudynirvana/complexity-science/blob/main/docs/manuscript/thesis_03_identifiability_gate.pdf"
+  - type: thesis
+    title: "What the Blood Film Allows: Parasite Clearance Curves Identify Infection Staging, Not Ring-Stage Drug Killing"
+    authors:
+      - family-names: Ogbonna
+        given-names: Kelechi Emeka
+    year: 2026
+    month: 10
+    notes: "Thesis #4. Computational research thesis manuscript; not peer reviewed."
+    url: "https://github.com/cloudynirvana/complexity-science/blob/main/docs/manuscript/thesis_04_clearance_identifiability.pdf"

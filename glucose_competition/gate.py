@@ -18,13 +18,14 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-from .identifiability import profile, report, two_sided
+from .identifiability import observe as observe_states
 from .model import Params
 
-STRUCTURAL = "refused:structural"
-PRACTICAL = "refused:practical"
-ONE_SIDED = "refused:one_sided_profile"
-OPEN = "open"
+from evidence_gate.core import ONE_SIDED, OPEN, PRACTICAL, STRUCTURAL  # noqa: F401
+from evidence_gate.core import GateDecision as _CoreDecision
+from evidence_gate.core import decide as _core_decide
+
+from .identifiability import PARAM_NAMES
 
 
 @dataclass(frozen=True)
@@ -47,17 +48,15 @@ class GateDecision:
 
 
 def decide(p: Params, exp: Experiment, cv_threshold=0.10, confirm_with_profile=True) -> GateDecision:
+    """Apply the shared evidence gate to this model under a declared experiment."""
     t = np.asarray(exp.times, float)
-    r = report(p, t, exp.observables, sigma=exp.sigma, cv_threshold=cv_threshold, T0=list(exp.arms_T0))
-    dec = GateDecision(experiment=exp, rank=r["rank"], cv=dict(r["cv"]))
-    for name, cv in r["cv"].items():
-        if not np.isfinite(cv):
-            dec.status[name] = STRUCTURAL
-        elif cv >= cv_threshold:
-            dec.status[name] = PRACTICAL
-        elif confirm_with_profile and len(exp.arms_T0) == 1:
-            prof = profile(p, name, t, exp.observables, sigma=exp.sigma, T0=exp.arms_T0[0])
-            dec.status[name] = OPEN if two_sided(prof) else ONE_SIDED
-        else:
-            dec.status[name] = OPEN
-    return dec
+    arms = list(exp.arms_T0)
+
+    def observe(theta: dict) -> np.ndarray:
+        q = Params(**theta)
+        return np.concatenate([observe_states(q, t, exp.observables, a) for a in arms])
+
+    core: _CoreDecision = _core_decide(observe, p.__dict__, PARAM_NAMES, sigma=exp.sigma,
+                                       cv_threshold=cv_threshold,
+                                       confirm_with_profile=confirm_with_profile)
+    return GateDecision(experiment=exp, status=dict(core.status), cv=dict(core.cv), rank=core.rank)

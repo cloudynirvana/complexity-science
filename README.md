@@ -118,6 +118,34 @@ Main results (dimensionless model, not fitted to data):
 - The schematic above is generated from `results.json`, so its verdict panel
   cannot drift from the computed results; a test enforces this.
 
+## Thesis #4 (manuscript): what a blood film allows
+
+*What the Blood Film Allows: Parasite Clearance Curves Identify Infection
+Staging, Not Ring-Stage Drug Killing.* The same gate, through the same code
+(`evidence_gate/`), applied to malaria — a setting where the measurement is
+already standardised worldwide and partial artemisinin resistance has emerged
+in Africa.
+
+![What a clearance curve can measure](docs/manuscript/thesis_04_figures/fig1_overview.png)
+
+Main results (within-host model; nothing fitted to patient data):
+
+- A clearance half-life of 3.1 h is produced by a **50-fold range** of
+  ring-stage killing rates once presentation time is free to vary.
+- Under the routine protocol (6-hourly films to 48 h, 20% counting error)
+  **no parameter is admissible**; ring-stage killing has a CV bound of 1.63.
+- What richer designs do admit is **sequestration age** and **mean parasite age
+  at presentation** — the observation process, not the drug.
+- The binding constraint is counting precision, which would need to improve
+  one to two orders of magnitude beyond light microscopy.
+
+- Manuscript: `docs/manuscript/thesis_04_clearance_identifiability.md` / `.pdf`
+- Code: `malaria_clearance/` (model, analysis, figures), `evidence_gate/` (shared gate)
+- Reproduce: `python -m malaria_clearance.analysis`
+- Rebuild the PDF: `docs/manuscript/src/build_pdf.sh thesis_04 thesis_04_clearance_identifiability`
+
+Not a medical device, not clinical decision support, not treatment guidance.
+
 Repository assessment and what should happen next: `docs/REVIEW_AND_ROADMAP.md`.
 
 `pathology_cases/` and `pipeline/` still import no numerical library.

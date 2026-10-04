@@ -2,7 +2,7 @@
   "title": "Complexity Science: gated in-silico research objects for complex pathology",
   "upload_type": "software",
   "license": "MIT",
-  "description": "<p>Computational research software and manuscripts on honest parameterisation in complex pathology.</p><p><strong>Thesis #2</strong> specifies a data-only CaseCard pipeline whose evidence gate never opens: knowledge, evidence pointers, candidate mechanisms, falsifiers and qualitative Nigeria Standard Treatment Guidelines (NSTG) constraints are held as data, and any attempt to turn them into doses, rate constants or ODE coefficients is refused.</p><p><strong>Thesis #3</strong> replaces that permanent refusal with a computable admission criterion for a declared experiment: structural identifiability (Fisher rank), a Cramer-Rao coefficient-of-variation bound, and a two-sided profile likelihood. Applied to a minimal tumour / effector / glucose model, it shows that the T-cell kill rate is structurally unidentifiable from tumour-burden data and remains refused even under full-state observation at realistic sampling.</p><p>Computational research only. Not a medical device, not clinical decision support, not dosing advice. No patient, cohort or animal data were used.</p>",
+  "description": "<p>Computational research software and manuscripts on honest parameterisation in complex pathology.</p><p><strong>Thesis #2</strong> specifies a data-only CaseCard pipeline whose evidence gate never opens: knowledge, evidence pointers, candidate mechanisms, falsifiers and qualitative Nigeria Standard Treatment Guidelines (NSTG) constraints are held as data, and any attempt to turn them into doses, rate constants or ODE coefficients is refused.</p><p><strong>Thesis #3</strong> replaces that permanent refusal with a computable admission criterion for a declared experiment: structural identifiability (Fisher rank), a Cramer-Rao coefficient-of-variation bound, and a two-sided profile likelihood. Applied to a minimal tumour / effector / glucose model, it shows that the T-cell kill rate is structurally unidentifiable from tumour-burden data and remains refused even under full-state observation at realistic sampling.</p><p><strong>Thesis #4</strong> applies the same gate, through the same code, to malaria: in a stage-structured within-host model of <em>Plasmodium falciparum</em>, the parasite clearance half-life used worldwide to surveil artemisinin partial resistance is shown to identify infection staging and sequestration rather than ring-stage drug killing, which is refused under every realistic blood-film design.</p><p>Computational research only. Not a medical device, not clinical decision support, not dosing advice. No patient, cohort or animal data were used.</p>",
   "creators": [
     {
       "name": "Ogbonna, Kelechi Emeka"
@@ -16,6 +16,9 @@
     "evidence gate",
     "tumour-immune dynamics",
     "metabolic competition",
+    "malaria",
+    "artemisinin resistance",
+    "parasite clearance",
     "NSTG",
     "parameter smuggling",
     "reproducible research"
