@@ -35,9 +35,10 @@ and one withdrawn claim are reported rather than buried.
    is internally consistent, which is not the same as being right. Thesis #4 is
    the closest to a testable claim, because its prediction is about a protocol
    that thousands of studies already run.
-2. **Thesis #2 has no figures.** A reader cannot see the architecture it
-   describes without reading 10,000 words. It is also repetitive: the
-   non-claims are restated on nearly every page.
+2. **Thesis #2 has no figures of its own.** The framework schematic now covers
+   its architecture on the README front page, but the manuscript itself still
+   carries none, and it is repetitive: the non-claims are restated on nearly
+   every page.
 3. **Thesis #3 rests on one parameter point.** Bistability occurred in 1 of 400
    random draws, and the reference point was chosen because it was bistable.
    The identifiability results are reported at that point only.
@@ -57,8 +58,11 @@ and one withdrawn claim are reported rather than buried.
    fourth manuscript.
 2. **Resolve PR #1.** Merge it or close it with a note. A cited pull request
    should not stay open.
-3. **Give Thesis #2 one figure** — the CaseCard-to-PathwaySketch flow, drawn the
-   same way as Figure 1 of Thesis #3 — and cut its repetition by roughly a third.
+3. **Fold the framework schematic into Thesis #2** (panel B already draws its
+   CaseCard-to-PathwaySketch flow) and cut the manuscript's repetition by about
+   a third. Note that Thesis #2's PDF was built with pandoc + XeLaTeX, which is
+   not installed here; rebuilding it would either need that toolchain or a
+   switch to the HTML pipeline used by Theses #3 and #4.
 4. **Widen Thesis #3's identifiability result** beyond the single reference
    point: repeat the Fisher and profile analysis across a sample of parameter
    sets and report how often the kill rate is refused.

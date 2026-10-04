@@ -3,6 +3,14 @@
 Efficient **in-silico** pipeline for **complex pathological cases** aimed at
 systemic personalized-medicine **research**.
 
+![The complexity-science framework](docs/manuscript/framework/fig_framework.png)
+
+*The framework in one page: the five layers that are routinely collapsed into a
+single number, the gate that separates argument from a number someone will act
+on, and the three manuscripts that build and test it. Every verdict in the
+figure is read from the committed results files — regenerate with
+`python docs/manuscript/src/framework_figure.py`.*
+
 **Not a medical device. Not CDS. Not dosing. Not a cure.**
 
 ```text
